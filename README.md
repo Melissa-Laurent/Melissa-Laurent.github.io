@@ -5,7 +5,7 @@ Portfolio de **Mélissa Laurent**, étudiante en architecture d'intérieur à Yn
 🔗 **https://melissa-laurent.github.io**
 
 Site statique (HTML / CSS / JavaScript, sans framework ni build), bilingue **français / anglais**, avec mode sombre.
-Il reprend la structure du portfolio de [@RaphPicard](https://github.com/RaphPicard/RaphPicard.github.io) et l'identité visuelle du portfolio PDF de Mélissa.
+Il reprend la structure du portfolio de [@RaphPicard](https://github.com/RaphPicard/RaphPicard.github.io) et l'identité visuelle de mon portfolio.
 
 ---
 
@@ -24,45 +24,9 @@ Fonctionnalités : bascule FR/EN mémorisée, mode clair/sombre sans flash, text
 
 ---
 
-## ⚠️ À remplacer avant la mise en ligne
-
-Deux liens sont encore des **placeholders** (dans `index.html`, 2 fois chacun) :
-
-| Placeholder | À remplacer par | Exemple |
-|---|---|---|
-| `PSEUDO_LINKEDIN` | l'identifiant de son profil LinkedIn (ce qui suit `linkedin.com/in/`) | `melissa-laurent-123abc` |
-| `PSEUDO_INSTAGRAM` | son pseudo Instagram | `melissa.archi` |
-
-**Avec VS Code** : `Cmd + Maj + H` (Rechercher et remplacer dans tous les fichiers) → taper le placeholder → taper la valeur → « Tout remplacer ».
-
-**En ligne de commande (macOS)**, depuis le dossier du projet :
-
-```bash
-grep -rl PSEUDO_LINKEDIN  . | xargs sed -i '' 's/PSEUDO_LINKEDIN/son-identifiant-linkedin/g'
-grep -rl PSEUDO_INSTAGRAM . | xargs sed -i '' 's/PSEUDO_INSTAGRAM/son_pseudo_insta/g'
-```
-
-Vérification : `grep -rn PSEUDO_ .` ne doit plus rien afficher.
-
----
-
 ## Mise en ligne sur GitHub Pages
 
-1. Le dépôt doit s'appeler exactement **`Melissa-Laurent.github.io`** (c'est déjà le cas).
-2. Mettre le **contenu** de ce dossier à la racine du dépôt (`index.html` doit être à la racine, pas dans un sous-dossier) :
-   - **Sans Git** : sur github.com, *Add file → Upload files*, glisser tous les fichiers et dossiers, puis *Commit changes*.
-   - **Avec Git** :
-     ```bash
-     cd melissa-portfolio
-     git init
-     git add .
-     git commit -m "Premier commit : portfolio"
-     git branch -M main
-     git remote add origin https://github.com/Melissa-Laurent/Melissa-Laurent.github.io.git
-     git push -u origin main
-     ```
-3. Sur GitHub : **Settings → Pages → Source : Deploy from a branch → Branch : `main` / `(root)` → Save**.
-4. Après 1 à 2 minutes, le site est en ligne sur https://melissa-laurent.github.io.
+Le site est en ligne sur https://melissa-laurent.github.io.
 
 ---
 
@@ -134,7 +98,7 @@ Le header et le footer sont chargés avec `fetch()` (`js/includes.js`) : il faut
 | Bleu marine | `#2A3E92` | Grands numéros, liens, bouton principal |
 | Encre | `#231F20` | Texte, traits fins |
 
-Les polices de son PDF (Sakire, Nexa, SFT Schrifted Round) ne sont pas disponibles gratuitement en ligne : le site utilise des équivalents Google Fonts proches, **Bodoni Moda** (titres), **Figtree** (texte) et **Outfit** (labels).
+Les polices de mon PDF (Sakire, Nexa, SFT Schrifted Round) ne sont pas disponibles gratuitement en ligne : le site utilise des équivalents Google Fonts proches, **Bodoni Moda** (titres), **Figtree** (texte) et **Outfit** (labels).
 
 ---
 
@@ -142,4 +106,3 @@ Les polices de son PDF (Sakire, Nexa, SFT Schrifted Round) ne sont pas disponibl
 
 - Le site n'affiche que l'**email** et la **ville**.
 - Les PDF téléchargeables (`assets/CV_Melissa_Laurent.pdf` et `assets/Portfolio_Melissa_Laurent.pdf`) sont des **versions web** : le numéro de téléphone a été retiré et l'adresse postale remplacée par la ville (suppression réelle du texte, pas un simple cache).
-- La photo « Parquet » des ateliers Leroy Merlin n'est pas reprise car d'autres élèves y sont reconnaissables.
