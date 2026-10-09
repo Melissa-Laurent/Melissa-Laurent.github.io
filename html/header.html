@@ -1,0 +1,46 @@
+
+<!-- le header et footer se chargent via fetch(), ce qui nécessite un serveur HTTP
+ — ça fonctionne parfaitement sur GitHub Pages et avec Live Server dans VS Code,
+ mais pas en ouvrant index.html directement depuis le Finder (protocole file://). -->
+
+<nav>
+    <div class="nav-inner">
+      <!-- Avatar fixe collé à gauche de l'écran (position: fixed dans le CSS) -->
+      <!-- Le chemin "assets/PDP.jpg" est corrigé automatiquement par includes.js sur la page html/projects.html -->
+      <a href="#hero" class="nav-avatar-link" aria-label="Retour en haut de page">
+        <div class="nav-avatar">
+          <img src="assets/PDP.jpg" alt="Mélissa Laurent">
+        </div>
+      </a>
+      <a href="#hero" class="nav-logo">Mélissa <span>Laurent</span></a>
+
+      <!-- id="navLinks" : ciblé par JS (toggleMobileNav) pour afficher/masquer le menu sur mobile -->
+      <div class="nav-links" id="navLinks">
+        <!-- data-en / data-fr : système bilingue — JS lit ces attributs et remplace innerHTML selon la langue choisie -->
+        <a href="#about" data-en="About" data-fr="À propos">À propos</a>
+        <a href="#skills" data-en="Skills" data-fr="Compétences">Compétences</a>
+        <a href="#projects" data-en="Projects" data-fr="Projets">Projets</a>
+        <a href="#experience" data-en="Journey" data-fr="Parcours">Parcours</a>
+        <!-- nav-cta : variante visuelle du lien de contact (définie dans navbar.css) -->
+        <a href="#contact" class="btn nav-cta" data-en="Contact me" data-fr="Me contacter">Me contacter</a>
+      </div>
+
+      <!-- Conteneur inline-flex pour aligner le bouton langue, le thème et le bouton hamburger -->
+      <div style="display:flex;align-items:center;gap:0.5rem">
+        <!-- Bouton de bascule FR/EN — onclick appelle toggleLang() défini dans js/lang.js -->
+        <button class="lang-toggle" id="langToggle" onclick="toggleLang()" aria-label="Changer de langue / Switch language">
+          <!-- id="langLabel" : affiche la langue vers laquelle on bascule ("EN" quand le site est en français) -->
+          <span id="langLabel">EN</span>
+        </button>
+        <!-- Bouton dark/light mode — icône 🌙 en clair, ☀️ en sombre -->
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Basculer thème sombre/clair">
+          <span id="themeIcon">🌙</span>
+        </button>
+        <!-- Bouton hamburger mobile — aria-label rend le bouton accessible aux lecteurs d'écran -->
+        <button class="nav-mobile-btn" onclick="toggleMobileNav()" aria-label="menu">
+          <!-- 3 spans = 3 barres horizontales du burger (stylisées en CSS) -->
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>

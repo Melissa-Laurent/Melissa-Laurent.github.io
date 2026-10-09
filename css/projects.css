@@ -1,0 +1,202 @@
+/* ===== PROJECTS ===== */
+#projects { background: var(--bg); overflow: hidden; }
+/* Grand cercle bleu ciel qui déborde à gauche, comme derrière ses plans de l'appartement */
+#projects .deco-sky-circle {
+  width: 420px; height: 420px; left: -260px; top: 22%; opacity: 0.55;
+}
+
+/* Page dédiée aux projets — compense la navbar fixe */
+#projects-page {
+  background: var(--bg);
+  padding-top: calc(var(--nav-height) + 4rem);
+  padding-bottom: 4rem;
+}
+
+/* Boutons « Voir tous les projets » + « Portfolio PDF » centrés sous la grille */
+.projects-see-all {
+  display: flex; flex-wrap: wrap; gap: 0.75rem;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+
+/* ===== IMAGE DE PRÉVISUALISATION ===== */
+/* Déborde des padding de la carte grâce aux marges négatives.
+   Pas de hauteur fixe — aspect-ratio est appliqué par js/project-img-fit.js au chargement. */
+.project-img-wrap {
+  position: relative;
+  margin: -1.75rem -1.75rem 1.25rem;
+  border-radius: calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0;
+  overflow: hidden;
+  max-height: 280px;
+  background: #fff; /* fond blanc : les plans et coupes ont un fond blanc */
+  flex-shrink: 0;
+  cursor: zoom-in;
+}
+/* Carte vedette pleine largeur : ratio panoramique fixe, idéal pour les coupes */
+.project-card.featured .project-img-wrap {
+  aspect-ratio: 21 / 9;
+  max-height: none;
+}
+.project-img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.45s cubic-bezier(0.16,1,0.3,1);
+}
+/* Plans et dessins techniques : on les montre en entier plutôt que recadrés */
+.project-img.contain { object-fit: contain; padding: 0.5rem; }
+.project-card:hover .project-img { transform: scale(1.04); }
+/* Pastille « ⤢ 8 planches » en bas à droite de l'image (ajoutée par js/lightbox.js) */
+.project-img-count {
+  position: absolute; right: 0.75rem; bottom: 0.75rem;
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-family: var(--font-label); font-size: 0.72rem; letter-spacing: 0.04em;
+  color: var(--ink);
+  background: rgba(254,235,214,0.92);
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.6rem; border-radius: 999px;
+  pointer-events: none;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+
+/* Grille 2 colonnes — la carte "featured" prend les 2 colonnes via grid-column: span 2 */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  display: flex; flex-direction: column;
+  transition: transform 0.45s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.35s ease-out,
+              border-color 0.25s ease-out;
+  will-change: transform;
+  position: relative; overflow: hidden;
+}
+/* Barre pêche → bleu ciel en haut — slide depuis la gauche au survol */
+.project-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--peach), var(--sky));
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: opacity 0.2s ease, transform 0.45s cubic-bezier(0.16,1,0.3,1);
+  z-index: 3; /* au-dessus de l'image */
+}
+.project-card:hover {
+  border-color: transparent;
+  box-shadow: 0 24px 64px rgba(91,58,30,0.14), 0 8px 24px rgba(91,58,30,0.07);
+  transform: translateY(-8px) scale(1.015);
+}
+.project-card:hover::before { opacity: 1; transform: scaleX(1); }
+/* Carte "featured" : occupe les 2 colonnes, fond bleu marine des grands numéros */
+.project-card.featured {
+  grid-column: span 2;
+  background: linear-gradient(145deg, var(--featured-from) 0%, var(--featured-to) 100%);
+  border-color: var(--featured-border);
+  color: var(--featured-text);
+}
+/* Adaptations des couleurs de texte pour le fond marine */
+.project-card.featured .project-desc { color: var(--featured-muted); }
+.project-card.featured .project-name { color: var(--featured-text); }
+.project-card.featured .project-tech span {
+  background: rgba(254,235,214,0.08);
+  border-color: rgba(254,235,214,0.2);
+  color: var(--featured-muted);
+}
+.project-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 1rem;
+}
+/* Icône ronde du projet — fond pêche pâle avec emoji */
+.project-icon {
+  width: 44px; height: 44px;
+  border-radius: 50%; font-size: 1.25rem;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--peach-light); flex-shrink: 0;
+}
+.project-card.featured .project-icon { background: rgba(166,226,249,0.18); }
+.project-links { display: flex; gap: 0.5rem; }
+/* Bouton carré « agrandir les planches » (ouvre la visionneuse) */
+.project-link {
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border); border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted); font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 0.2s ease,
+              border-color 0.2s ease,
+              background-color 0.2s ease,
+              transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.project-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-light);
+  transform: scale(1.15);
+}
+.project-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* Variantes de couleur pour les boutons de la carte vedette (fond marine) */
+.project-card.featured .project-link { border-color: var(--featured-border); color: var(--featured-muted); }
+.project-card.featured .project-link:hover { border-color: var(--sky); color: var(--sky); background: rgba(166,226,249,0.12); }
+.project-name {
+  font-family: var(--font-serif);
+  font-size: 1.3rem; font-weight: 500; line-height: 1.25;
+  color: var(--text-primary); margin-bottom: 0.6rem;
+}
+.project-desc {
+  font-size: 0.9rem; color: var(--text-secondary);
+  font-style: italic; /* comme les textes de contexte de son PDF */
+  line-height: 1.75; flex: 1; /* flex: 1 pousse les tags en bas de la carte */
+  margin-bottom: 1.25rem;
+}
+.project-tech {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+}
+/* Tags (logiciels, techniques) utilisés dans chaque projet */
+.project-tech span {
+  font-family: var(--font-label); font-size: 0.7rem; letter-spacing: 0.02em;
+  padding: 0.2rem 0.6rem; border-radius: 5px;
+  background: var(--bg); border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+
+/* Binôme / coéquipiers — masqué par défaut, visible dès qu'un <a> ou <span> est présent */
+.project-coworkers {
+  display: none; /* affiché en flex dès qu'un nom est présent grâce au sélecteur :has() */
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.project-coworkers:has(> a, > span) { display: flex; }
+.project-coworkers::before { content: 'avec '; }
+html[lang="en"] .project-coworkers::before { content: 'with '; }
+.project-coworkers a { color: var(--accent); transition: opacity 0.2s; }
+.project-coworkers a:hover { opacity: 0.7; }
+.project-card.featured .project-coworkers a { color: var(--sky); }
+
+
+/* Badge pêche « Projet de B1 » sur les cartes */
+.project-highlight-badge {
+  display: inline-flex; align-self: flex-start; align-items: center; gap: 0.3rem;
+  font-family: var(--font-label); font-size: 0.7rem; letter-spacing: 0.04em;
+  color: var(--status-available); background: var(--peach-light);
+  border: 1px solid var(--peach-soft);
+  padding: 0.2rem 0.6rem; border-radius: 5px;
+  margin-bottom: 0.75rem; margin-top: -0.25rem;
+}
+.project-card.featured .project-highlight-badge {
+  color: var(--peach); background: rgba(249,176,107,0.12); border-color: rgba(249,176,107,0.3);
+}

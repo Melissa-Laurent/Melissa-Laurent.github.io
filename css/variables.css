@@ -1,0 +1,69 @@
+/* ===== CSS VARIABLES =====
+   Charte reprise du portfolio PDF de Mélissa :
+   crème #FEEBD6 (fond de toutes les planches), bleu ciel #A6E2F9 (blocs arrondis),
+   pêche #F9B06B (cercles et bandeaux), bleu marine #2A3E92 (grands numéros 01–05),
+   encre #231F20 (traits fins et titres).
+   Pour changer l'ambiance du site, il suffit de modifier ce fichier (et dark-mode.css). */
+:root {
+  /* Couleurs de la charte (valeurs brutes) */
+  --cream: #FEEBD6;
+  --sky: #A6E2F9;
+  --peach: #F9B06B;
+  --navy: #2A3E92;
+  --ink: #231F20;
+
+  /* Couleurs de fond — --bg pour le fond général, --bg-card pour les surfaces élevées */
+  --bg: #FEEBD6;
+  --bg-card: #FFF8F0;
+  --bg-card-hover: #FFFBF6;
+  /* Hiérarchie de texte : primary > secondary > muted (du plus au moins contrasté) */
+  --text-primary: #231F20;
+  --text-secondary: #5E534C;
+  --text-muted: #8C7C70;
+  /* Couleur d'accent (bleu marine des numéros) et ses déclinaisons */
+  --accent: #2A3E92;
+  --accent-hover: #1F2F73;
+  --accent-2: #5B79D6;        /* fin des dégradés (nom, barre de progression) */
+  --accent-soft: #A6E2F9;     /* bleu ciel : bordures, bouton tertiaire */
+  --accent-light: #E2F4FC;    /* bleu ciel très pâle : fonds de survol */
+  --on-accent: #FEEBD6;       /* texte posé sur un fond --accent */
+  /* Pêche : second accent (cercles décoratifs, badges, barre des cartes) */
+  --peach-soft: #FCD3A8;
+  --peach-light: #FDE3C8;
+  /* Statut — la pastille « Recherche un stage » reprend la pêche de la charte */
+  --status-available: #B85C14;
+  --status-available-soft: #FCD9B4;
+  --status-unavailable: #B4232A;
+  --status-unavailable-soft: #FBE0DD;
+  /* Bordures : --border est visible, --border-subtle est quasi-invisible (séparations internes) */
+  --border: #EACFB2;
+  --border-subtle: #F5E0C8;
+  /* Traits fins façon planche d'archi (cadres, croix décoratives) */
+  --line: rgba(35, 31, 32, 0.85);
+  /* Ombres chaudes à 3 niveaux — teintées brun pour rester douces sur le crème */
+  --shadow-sm: 0 1px 3px rgba(91,58,30,0.08), 0 1px 2px rgba(91,58,30,0.05);
+  --shadow-md: 0 4px 16px rgba(91,58,30,0.10), 0 2px 8px rgba(91,58,30,0.05);
+  --shadow-lg: 0 20px 60px rgba(91,58,30,0.12), 0 8px 24px rgba(91,58,30,0.06);
+  --shadow-accent: 0 6px 18px rgba(42,62,146,0.28);
+  /* Halo qui suit la souris */
+  --spotlight: rgba(249,176,107,0.16);
+  /* Carte projet « vedette » (fond marine) */
+  --featured-from: #2A3E92;
+  --featured-to: #1B275E;
+  --featured-text: #FEEBD6;
+  --featured-muted: #C9D3F2;
+  --featured-border: rgba(166,226,249,0.25);
+  /* Rayons de bordure — --radius pour les grandes cartes, --radius-sm pour les petits éléments */
+  --radius: 18px;
+  --radius-sm: 12px;
+  /* Familles de polices — équivalents Google Fonts des polices de son PDF :
+     Bodoni Moda ≈ Sakire (titres didone), Figtree ≈ SFT Schrifted Round (texte),
+     Outfit ≈ Nexa (labels en capitales espacées) */
+  --font-sans: 'Figtree', 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: 'Bodoni Moda', 'Didot', 'Bodoni 72', Georgia, serif;
+  --font-label: 'Outfit', 'Figtree', sans-serif;
+  /* Hauteur de la navbar fixe — réutilisée pour le padding-top du hero et les calculs d'offset JS */
+  --nav-height: 68px;
+  /* Largeur maximale du layout, centré avec margin: auto */
+  --max-w: 1100px;
+}

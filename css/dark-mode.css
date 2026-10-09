@@ -1,0 +1,71 @@
+/* ===== DARK MODE ===== */
+
+/* Transitions fluides sur les éléments structurels lors du changement de thème */
+body, nav,
+.hero-card, .project-card, .timeline-content, .highlight-item,
+.contact-card, .meta-item, .skill-tag, .tech-chip,
+.hcard-header, .hcard-tech, .hero-floating, .timeline-tags span,
+.project-tech span, .btn-secondary, .contact-email, .contact-links a {
+  transition: background-color 0.25s ease, border-color 0.25s ease,
+              color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Override des variables CSS — toutes les propriétés var(--...) héritent automatiquement.
+   Version « nuit » de sa charte : fond bleu nuit, texte crème, accent bleu ciel, pêche conservée */
+html[data-theme="dark"] {
+  --bg:              #141830;
+  --bg-card:         #1C2142;
+  --bg-card-hover:   #232951;
+  --text-primary:    #FEEBD6;
+  --text-secondary:  #CDBDAE;
+  --text-muted:      #9C91A6;
+  --accent:          #A6E2F9;
+  --accent-hover:    #C8EEFC;
+  --accent-2:        #F9B06B;
+  --accent-soft:     rgba(166,226,249,0.35);
+  --accent-light:    rgba(166,226,249,0.10);
+  --on-accent:       #141830;
+  --peach-soft:      rgba(249,176,107,0.35);
+  --peach-light:     rgba(249,176,107,0.14);
+  --status-available:      #F9B06B;
+  --status-available-soft: rgba(249,176,107,0.16);
+  --border:          #2F3660;
+  --border-subtle:   #252B50;
+  --line:            rgba(254,235,214,0.5);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.4);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.6), 0 8px 24px rgba(0,0,0,0.45);
+  --shadow-accent: 0 6px 18px rgba(166,226,249,0.18);
+  --spotlight: rgba(166,226,249,0.07);
+  --featured-from: #26327A;
+  --featured-to:   #1A2150;
+  --featured-border: rgba(166,226,249,0.2);
+}
+
+/* Fond navbar teinté bleu nuit (glass effect sombre) */
+html[data-theme="dark"] nav {
+  background: rgba(20, 24, 48, 0.88);
+}
+
+/* Grain légèrement plus visible en dark — renforce l'effet « papier » */
+html[data-theme="dark"] body::before { opacity: 0.65; }
+
+/* Formes décoratives un peu adoucies sur fond sombre */
+html[data-theme="dark"] .deco-sky-pillar,
+html[data-theme="dark"] .deco-sky-circle,
+html[data-theme="dark"] .about-portrait::before { opacity: 0.75; }
+html[data-theme="dark"] .deco-peach-circle,
+html[data-theme="dark"] #about .deco-peach-pillar,
+html[data-theme="dark"] #contact .deco-peach-half { opacity: 0.8; }
+
+/* Pastille du nombre de planches sur fond sombre */
+html[data-theme="dark"] .project-img-count {
+  background: rgba(20,24,48,0.85); color: #FEEBD6; border-color: #2F3660;
+}
+
+/* Dégradé du nom — bleu ciel vers pêche sur fond sombre */
+html[data-theme="dark"] .hero-name em {
+  background: linear-gradient(135deg, #A6E2F9, #F9B06B);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

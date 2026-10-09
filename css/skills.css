@@ -1,0 +1,63 @@
+/* ===== SKILLS ===== */
+#skills { background: var(--bg); }
+.skills-wrapper { margin-top: 3rem; }
+.skills-category { margin-bottom: 3rem; }
+.skills-cat-title {
+  font-family: var(--font-label); font-size: 0.74rem;
+  text-transform: uppercase; letter-spacing: 0.16em;
+  color: var(--text-muted); margin-bottom: 1.25rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+/* Ligne fine après le titre de catégorie — flex: 1 la fait s'étirer jusqu'au bord */
+.skills-cat-title::after {
+  content: ''; flex: 1; height: 1px; background: var(--line); opacity: 0.25;
+}
+.skills-grid {
+  display: flex; flex-wrap: wrap; gap: 0.65rem; /* flex-wrap : les tags passent à la ligne automatiquement */
+}
+/* Tag de compétence — style pill avec bordure légère */
+.skill-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.86rem; font-weight: 500;
+  padding: 0.45rem 0.95rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  cursor: default; /* élément non cliquable */
+}
+.skill-tag:hover {
+  border-color: var(--accent-soft);
+  background: var(--accent-light);
+  color: var(--accent);
+  transform: translateY(-2px); /* légère élévation au survol */
+  box-shadow: var(--shadow-sm);
+}
+/* Variante "featured" pour les compétences principales — déjà colorée sans survol */
+.skill-tag.featured {
+  background: var(--accent-light);
+  border-color: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+/* Petite précision en italique (ex : « en cours d'apprentissage ») */
+.skill-tag small {
+  font-size: 0.72rem; font-weight: 400; font-style: italic;
+  color: var(--text-muted);
+}
+
+/* Monogramme des logiciels (Ac, Id, Ps…) : pastilles aux couleurs de la charte,
+   sans dépendre de logos externes qui pourraient ne pas charger */
+.skill-logo {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; flex-shrink: 0;
+  border-radius: 6px;
+  font-family: var(--font-label); font-size: 0.66rem; font-weight: 600;
+  letter-spacing: 0;
+  color: var(--ink);
+  background: var(--sky);
+}
+.skill-logo--peach { background: var(--peach); }
+.skill-logo--navy  { background: var(--navy); color: var(--cream); }
+.skill-logo--ink   { background: var(--ink);  color: var(--cream); }

@@ -1,0 +1,75 @@
+/* ===== LIGHTBOX (visionneuse de planches) =====
+   Ajout par rapport au site de Raphaël : pour un portfolio d'architecture intérieure,
+   les planches (plans, coupes, moodboards, maquettes) doivent pouvoir être vues en grand.
+   Le DOM est créé par js/lightbox.js. */
+.lightbox {
+  position: fixed; inset: 0; z-index: 2000;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 1rem;
+  padding: 4.5rem 5rem 2rem;
+  background: rgba(23, 20, 21, 0.94);
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+.lightbox.open { opacity: 1; visibility: visible; }
+/* Empêche la page de défiler derrière la visionneuse */
+body.lightbox-lock { overflow: hidden; }
+
+.lightbox-figure {
+  display: flex; flex-direction: column; align-items: center; gap: 0.9rem;
+  max-width: 100%; max-height: 100%;
+  margin: 0;
+}
+.lightbox-img {
+  max-width: min(1400px, 100%);
+  max-height: calc(100vh - 10rem);
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  background: #fff;
+  transform: scale(0.97);
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), opacity 0.2s ease;
+}
+.lightbox.open .lightbox-img { transform: scale(1); }
+.lightbox-img.loading { opacity: 0.3; }
+.lightbox-caption {
+  display: flex; align-items: baseline; gap: 0.9rem; flex-wrap: wrap; justify-content: center;
+  color: #FEEBD6;
+  font-family: var(--font-sans); font-style: italic; font-size: 0.95rem;
+  text-align: center;
+}
+.lightbox-counter {
+  font-family: var(--font-label); font-style: normal; font-size: 0.75rem;
+  letter-spacing: 0.12em; color: #A6E2F9;
+}
+
+/* Boutons ronds : fermer, précédent, suivant */
+.lightbox-btn {
+  position: absolute;
+  width: 46px; height: 46px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(254,235,214,0.35);
+  background: rgba(254,235,214,0.08);
+  color: #FEEBD6;
+  font-size: 1.25rem; line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.25s cubic-bezier(0.34,1.56,0.64,1), border-color 0.2s ease;
+}
+.lightbox-btn:hover { background: #F9B06B; border-color: #F9B06B; color: #231F20; transform: scale(1.08); }
+.lightbox-btn:focus-visible { outline: 2px solid #A6E2F9; outline-offset: 3px; }
+.lightbox-close { top: 1.25rem; right: 1.25rem; }
+.lightbox-prev  { left: 1.25rem;  top: 50%; margin-top: -23px; }
+.lightbox-next  { right: 1.25rem; top: 50%; margin-top: -23px; }
+.lightbox.single .lightbox-prev,
+.lightbox.single .lightbox-next { display: none; }
+
+@media (max-width: 768px) {
+  .lightbox { padding: 4rem 0.75rem 5.5rem; }
+  .lightbox-img { max-height: calc(100vh - 12rem); }
+  .lightbox-prev, .lightbox-next { top: auto; bottom: 1.25rem; margin-top: 0; }
+  .lightbox-prev { left: calc(50% - 60px); }
+  .lightbox-next { right: calc(50% - 60px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lightbox, .lightbox-img { transition: none; }
+}

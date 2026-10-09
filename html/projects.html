@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projets — Mélissa Laurent</title>
+  <meta name="description" content="Tous les projets de Mélissa Laurent, étudiante en architecture d'intérieur : appartement-hôtel, open-space ERP, maquettes, dessins à la main et ateliers." />
+
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..700;1,400..700&family=Figtree:ital,wght@0,300..700;1,300..700&family=Outfit:wght@200..600&display=swap" />
+  <link rel="stylesheet" media="print" onload="this.media='all';this.onload=null" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..700;1,400..700&family=Figtree:ital,wght@0,300..700;1,300..700&family=Outfit:wght@200..600&display=swap" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..700;1,400..700&family=Figtree:ital,wght@0,300..700;1,300..700&family=Outfit:wght@200..600&display=swap" /></noscript>
+
+  <script src="../js/theme-init.js"></script>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+
+  <!-- Barre de progression de lecture — animée en CSS pur via animation-timeline: scroll() -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <div id="nav-placeholder"></div>
+
+  <!-- ===================================================
+       IMAGES DE PROJET : elles sont rangées dans assets/projets/
+       Chaque carte a :
+         - une image de couverture (.project-img)
+         - une liste cachée .project-gallery : toutes les planches
+           affichées dans la visionneuse (js/lightbox.js) avec leur légende FR/EN
+       Si l'image de couverture est absente, la zone image se masque automatiquement.
+  =================================================== -->
+
+  <section id="projects-page">
+    <div class="container">
+      <p class="section-eyebrow reveal"><span class="section-num">03</span><span data-en="Projects" data-fr="Projets">Projets</span></p>
+      <h1 class="section-title reveal reveal-delay-1" data-en="Things I've designed" data-fr="Ce que j'ai conçu">Ce que j'ai conçu</h1>
+      <p class="section-subtitle reveal reveal-delay-2"
+         data-en="School projects, scale models, hand drawings and workshops from my first year at Ynov. Click an image to see every board."
+         data-fr="Projets d'école, maquettes, dessins à la main et ateliers de ma première année à Ynov. Cliquez sur une image pour voir toutes les planches.">Projets d'école, maquettes, dessins à la main et ateliers de ma première année à Ynov. Cliquez sur une image pour voir toutes les planches.</p>
+
+      <div class="project-filters reveal reveal-delay-3">
+        <button class="pf-btn pf-active" data-filter="all"      data-en="All"     data-fr="Tout">Tout</button>
+        <button class="pf-btn"           data-filter="habitat"  data-en="Housing" data-fr="Habitat">Habitat</button>
+        <button class="pf-btn"           data-filter="erp">ERP</button>
+        <button class="pf-btn"           data-filter="maquette" data-en="Models"  data-fr="Maquettes">Maquettes</button>
+        <button class="pf-btn"           data-filter="dessin"   data-en="Drawing" data-fr="Dessin">Dessin</button>
+        <button class="pf-btn"           data-filter="autocad">AutoCAD</button>
+        <button class="pf-btn"           data-filter="ateliers" data-en="Workshops" data-fr="Ateliers">Ateliers</button>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- FEATURED : projet Habitat — appartement-hôtel -->
+        <div class="project-card featured reveal reveal-delay-1" data-tech="habitat autocad">
+          <!-- data-gallery-open : un clic ouvre la visionneuse avec toutes les planches listées dans .project-gallery -->
+          <div class="project-img-wrap" data-gallery-open>
+            <img src="../assets/projets/appart-coupe-texturee-1.jpg" alt="Coupe texturée de l'appartement-hôtel" class="project-img" loading="lazy"
+                 onerror="this.closest('.project-img-wrap').style.display='none'">
+          </div>
+          <div class="project-header">
+            <div class="project-icon">🏠</div>
+            <div class="project-links">
+              <button type="button" class="project-link" data-gallery-open title="Voir les planches" aria-label="Voir les planches en grand">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <!-- Badge pêche indiquant l'année et le contexte -->
+          <div class="project-highlight-badge">⭐ <span data-en="1st-year project · Ynov 2025/2026" data-fr="Projet de B1 · Ynov 2025/2026">Projet de B1 · Ynov 2025/2026</span></div>
+          <div class="project-name" data-en="Housing project — Aparthotel renovation" data-fr="Projet Habitat — Rénovation d'un appartement-hôtel">Projet Habitat — Rénovation d'un appartement-hôtel</div>
+          <div class="project-desc" data-en="Designing an interior layout from an existing survey. After surveying the site and discussing the brief with the client, I drew the as-built plans for the inventory file. With my project partner we then imagined a <strong>moon / sun</strong> concept to keep one guiding line across the whole apartment, and produced plans, furnished sections, room-by-room moodboards and perspectives for the client presentation."
+               data-fr="Conception d'un aménagement intérieur à partir d'un relevé existant. Après le relevé sur site et l'échange avec le client sur le cahier des charges, j'ai réalisé les plans de l'existant pour le dossier d'état des lieux. Avec ma binôme, nous avons imaginé un concept <strong>lune / soleil</strong> pour garder une même ligne directrice dans tout l'appartement, puis produit plans, coupes aménagées, moodboards par pièce et perspectives pour la présentation client.">Conception d'un aménagement intérieur à partir d'un relevé existant. Après le relevé sur site et l'échange avec le client sur le cahier des charges, j'ai réalisé les plans de l'existant pour le dossier d'état des lieux. Avec ma binôme, nous avons imaginé un concept <strong>lune / soleil</strong> pour garder une même ligne directrice dans tout l'appartement, puis produit plans, coupes aménagées, moodboards par pièce et perspectives pour la présentation client.</div>
+          <!-- Tags : logiciels et livrables -->
+          <div class="project-tech">
+            <span>AutoCAD</span><span>Photoshop</span><span>InDesign</span><span data-en="Site survey" data-fr="Relevé">Relevé</span><span data-en="As-built plans" data-fr="Plans EDE">Plans EDE</span><span data-en="Textured sections" data-fr="Coupes texturées">Coupes texturées</span><span>Moodboards</span>
+          </div>
+          <!-- Planches affichées dans la visionneuse (liste invisible, lue par js/lightbox.js) -->
+          <ul class="project-gallery" hidden>
+            <li><a href="../assets/projets/appart-coupe-texturee-1.jpg" data-en="Textured section (AutoCAD + Photoshop)" data-fr="Coupe texturée (AutoCAD + Photoshop)">Coupe texturée (AutoCAD + Photoshop)</a></li>
+            <li><a href="../assets/projets/appart-coupe-texturee-2.jpg" data-en="Textured section (AutoCAD + Photoshop)" data-fr="Coupe texturée (AutoCAD + Photoshop)">Coupe texturée (AutoCAD + Photoshop)</a></li>
+            <li><a href="../assets/projets/appart-plan-amenage.jpg" data-en="Furnished plan (AutoCAD)" data-fr="Plan aménagé (AutoCAD)">Plan aménagé (AutoCAD)</a></li>
+            <li><a href="../assets/projets/appart-plan-ede.jpg" data-en="Dimensioned as-built plan (AutoCAD)" data-fr="Plan de l'existant coté (AutoCAD)">Plan de l'existant coté (AutoCAD)</a></li>
+            <li><a href="../assets/projets/appart-coupe-cotee-1.jpg" data-en="Dimensioned furnished section (AutoCAD)" data-fr="Coupe aménagée cotée (AutoCAD)">Coupe aménagée cotée (AutoCAD)</a></li>
+            <li><a href="../assets/projets/appart-coupe-cotee-2.jpg" data-en="Dimensioned furnished section (AutoCAD)" data-fr="Coupe aménagée cotée (AutoCAD)">Coupe aménagée cotée (AutoCAD)</a></li>
+            <li><a href="../assets/projets/appart-moodboard-chambre.jpg" data-en="Bedroom moodboard — pared-back, soothing (InDesign)" data-fr="Moodboard chambre — épuré, apaisant (InDesign)">Moodboard chambre — épuré, apaisant (InDesign)</a></li>
+            <li><a href="../assets/projets/appart-moodboard-salon.jpg" data-en="Living-room moodboard — wood, concrete, balance (InDesign)" data-fr="Moodboard salon — bois, béton, équilibre (InDesign)">Moodboard salon — bois, béton, équilibre (InDesign)</a></li>
+            <li><a href="../assets/projets/perspective-habitat-chambre.jpg" data-en="Bedroom perspective, hand-drawn" data-fr="Perspective de la chambre, à la main">Perspective de la chambre, à la main</a></li>
+            <li><a href="../assets/projets/perspective-habitat-cuisine.jpg" data-en="Kitchen perspective, hand-drawn" data-fr="Perspective de la cuisine, à la main">Perspective de la cuisine, à la main</a></li>
+          </ul>
+        </div>
+
+        <!-- ERP : open-space Adopt -->
+        <div class="project-card reveal reveal-delay-2" data-tech="erp autocad maquette">
+          <div class="project-img-wrap" data-gallery-open>
+            <img src="../assets/projets/erp-moodboard-concept.jpg" alt="Moodboard concept du projet open-space Adopt" class="project-img" loading="lazy"
+                 onerror="this.closest('.project-img-wrap').style.display='none'">
+          </div>
+          <div class="project-header">
+            <div class="project-icon">🏢</div>
+            <div class="project-links">
+              <button type="button" class="project-link" data-gallery-open title="Voir les planches" aria-label="Voir les planches en grand">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-name" data-en="ERP project — Open-plan office for Adopt" data-fr="Projet ERP — Open-space pour Adopt">Projet ERP — Open-space pour Adopt</div>
+          <div class="project-desc" data-en="Renovating offices into an open-plan space suited to a company of our choice. With my project partner we chose the perfume brand Adopt and a <strong>hummingbird</strong> concept, tied to its logo: concept moodboard, concept models of a screen and a draped ceiling, then furnished plans and dimensioned sections."
+               data-fr="Rénovation de bureaux en open-space adapté à l'entreprise de notre choix. Avec ma binôme, nous avons choisi la marque de parfums Adopt et le concept du <strong>colibri</strong>, lié à son logo : moodboard concept, maquettes concept d'un paravent et d'un plafond en voile, puis plans aménagés et coupes cotées.">Rénovation de bureaux en open-space adapté à l'entreprise de notre choix. Avec ma binôme, nous avons choisi la marque de parfums Adopt et le concept du <strong>colibri</strong>, lié à son logo : moodboard concept, maquettes concept d'un paravent et d'un plafond en voile, puis plans aménagés et coupes cotées.</div>
+          <div class="project-tech"><span>AutoCAD</span><span>InDesign</span><span>ERP</span><span data-en="Concept models" data-fr="Maquettes concept">Maquettes concept</span><span data-en="Concept" data-fr="Concept">Concept</span></div>
+          <ul class="project-gallery" hidden>
+            <li><a href="../assets/projets/erp-moodboard-concept.jpg" data-en="Concept moodboard — feathers, airy, movement" data-fr="Moodboard concept — plumes, aérien, mouvement">Moodboard concept — plumes, aérien, mouvement</a></li>
+            <li><a href="../assets/projets/erp-plan-amenage.jpg" data-en="Full furnished plan" data-fr="Plan aménagé complet">Plan aménagé complet</a></li>
+            <li><a href="../assets/projets/erp-coupe-cotee-1.jpg" data-en="Dimensioned furnished section" data-fr="Coupe aménagée cotée">Coupe aménagée cotée</a></li>
+            <li><a href="../assets/projets/erp-coupe-cotee-2.jpg" data-en="Dimensioned furnished section" data-fr="Coupe aménagée cotée">Coupe aménagée cotée</a></li>
+            <li><a href="../assets/projets/erp-maquette-paravent-1.jpg" data-en="Concept model of the screen" data-fr="Maquette concept du paravent">Maquette concept du paravent</a></li>
+            <li><a href="../assets/projets/erp-maquette-paravent-2.jpg" data-en="Concept model of the screen (side view)" data-fr="Maquette concept du paravent (vue de côté)">Maquette concept du paravent (vue de côté)</a></li>
+            <li><a href="../assets/projets/erp-maquette-plafond-1.jpg" data-en="Concept model of the draped ceiling" data-fr="Maquette concept du plafond en voile">Maquette concept du plafond en voile</a></li>
+            <li><a href="../assets/projets/erp-maquette-plafond-2.jpg" data-en="Concept model of the draped ceiling (detail)" data-fr="Maquette concept du plafond en voile (détail)">Maquette concept du plafond en voile (détail)</a></li>
+          </ul>
+        </div>
+
+        <!-- Maquette de détail : suite d'hôtel -->
+        <div class="project-card reveal reveal-delay-2" data-tech="maquette">
+          <div class="project-img-wrap" data-gallery-open>
+            <img src="../assets/projets/detail-chambre.jpg" alt="Maquette de détail d'une suite d'hôtel" class="project-img" loading="lazy"
+                 onerror="this.closest('.project-img-wrap').style.display='none'">
+          </div>
+          <div class="project-header">
+            <div class="project-icon">🛏️</div>
+            <div class="project-links">
+              <button type="button" class="project-link" data-gallery-open title="Voir les planches" aria-label="Voir les planches en grand">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-name" data-en="Detail model — Hotel suite" data-fr="Maquette de détail — Suite d'hôtel">Maquette de détail — Suite d'hôtel</div>
+          <div class="project-desc" data-en="A very large-scale model of a hotel suite to work on the small fit-out details, materials and textures. Every material and colour choice is justified by the source of inspiration: architect Pierre Yovanovitch's Trocadéro project."
+               data-fr="Maquette d'une suite d'hôtel à très grande échelle pour travailler les petits détails d'agencement, les matériaux et les textures. Chaque choix de matériau et de couleur est justifié par la source d'inspiration : le projet Trocadéro de l'architecte Pierre Yovanovitch.">Maquette d'une suite d'hôtel à très grande échelle pour travailler les petits détails d'agencement, les matériaux et les textures. Chaque choix de matériau et de couleur est justifié par la source d'inspiration : le projet Trocadéro de l'architecte Pierre Yovanovitch.</div>
+          <div class="project-tech"><span data-en="Model" data-fr="Maquette">Maquette</span><span data-en="Large scale" data-fr="Grande échelle">Grande échelle</span><span data-en="Materials" data-fr="Matériaux">Matériaux</span><span>Moodboard</span></div>
+          <ul class="project-gallery" hidden>
+            <li><a href="../assets/projets/detail-vue-ensemble.jpg" data-en="Overall view" data-fr="Vue d'ensemble">Vue d'ensemble</a></li>
+            <li><a href="../assets/projets/detail-chambre.jpg" data-en="Hotel bedroom" data-fr="Chambre d'hôtel">Chambre d'hôtel</a></li>
+            <li><a href="../assets/projets/detail-salle-de-bain.jpg" data-en="Bathroom" data-fr="Salle de bain">Salle de bain</a></li>
+            <li><a href="../assets/projets/detail-moodboard.jpg" data-en="Inspiration moodboard — Pierre Yovanovitch, Trocadéro project" data-fr="Moodboard d'inspiration — Pierre Yovanovitch, projet Trocadéro">Moodboard d'inspiration — Pierre Yovanovitch, projet Trocadéro</a></li>
+          </ul>
+        </div>
+
+        <!-- Maquette d'étude : volumétrie -->
+        <div class="project-card reveal reveal-delay-3" data-tech="maquette">
+          <div class="project-img-wrap" data-gallery-open>
+            <img src="../assets/projets/etude-facade-droite.jpg" alt="Maquette d'étude en volumétrie" class="project-img" loading="lazy"
+                 onerror="this.closest('.project-img-wrap').style.display='none'">
+          </div>
+          <div class="project-header">
+            <div class="project-icon">🧱</div>
+            <div class="project-links">
+              <button type="button" class="project-link" data-gallery-open title="Voir les planches" aria-label="Voir les planches en grand">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-name" data-en="Study model — Volumetry" data-fr="Maquette d'étude — Volumétrie">Maquette d'étude — Volumétrie</div>
+          <div class="project-desc" data-en="Designing a space in volume from a 2D graphic exploration, checking that a 3D model built from a 2D zoning is feasible: structural, functional, technical and aesthetic aspects. I then cut and assembled the materials to show the different volumes and how they connect (ground floor + upper floor)."
+               data-fr="Conception d'un espace en volumétrie à partir d'une recherche graphique 2D, en veillant à la faisabilité d'une maquette 3D à partir d'un zoning 2D : aspects structurels, fonctionnels, techniques et esthétiques. J'ai ensuite découpé et assemblé les matériaux pour représenter les volumes et leur articulation (RDC + étage).">Conception d'un espace en volumétrie à partir d'une recherche graphique 2D, en veillant à la faisabilité d'une maquette 3D à partir d'un zoning 2D : aspects structurels, fonctionnels, techniques et esthétiques. J'ai ensuite découpé et assemblé les matériaux pour représenter les volumes et leur articulation (RDC + étage).</div>
+          <div class="project-tech"><span data-en="Model" data-fr="Maquette">Maquette</span><span data-en="Volumetry" data-fr="Volumétrie">Volumétrie</span><span data-en="2D zoning → 3D" data-fr="Zoning 2D → 3D">Zoning 2D → 3D</span></div>
+          <ul class="project-gallery" hidden>
+            <li><a href="../assets/projets/etude-facade-droite.jpg" data-en="Exterior view" data-fr="Vue extérieure">Vue extérieure</a></li>
+            <li><a href="../assets/projets/etude-facade-gauche.jpg" data-en="Exterior view" data-fr="Vue extérieure">Vue extérieure</a></li>
+            <li><a href="../assets/projets/etude-facade-principale.jpg" data-en="Main façade (entrance)" data-fr="Façade principale (entrée)">Façade principale (entrée)</a></li>
+            <li><a href="../assets/projets/etude-interieur-1.jpg" data-en="Interior (ground floor + upper floor)" data-fr="Intérieur (RDC + étage)">Intérieur (RDC + étage)</a></li>
+            <li><a href="../assets/projets/etude-interieur-2.jpg" data-en="Interior (ground floor + upper floor)" data-fr="Intérieur (RDC + étage)">Intérieur (RDC + étage)</a></li>
+          </ul>
+        </div>
+
+        <!-- Perspectives à la main -->
+        <div class="project-card reveal reveal-delay-4" data-tech="dessin habitat">
+          <div class="project-img-wrap" data-gallery-open>
+            <img src="../assets/projets/perspective-habitat-cuisine.jpg" alt="Perspective de cuisine dessinée à la main" class="project-img" loading="lazy"
+                 onerror="this.closest('.project-img-wrap').style.display='none'">
+          </div>
+          <div class="project-header">
+            <div class="project-icon">✏️</div>
+            <div class="project-links">
+              <button type="button" class="project-link" data-gallery-open title="Voir les planches" aria-label="Voir les planches en grand">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-name" data-en="Hand-drawn perspectives" data-fr="Perspectives à la main">Perspectives à la main</div>
+          <div class="project-desc" data-en="Two-point perspective grids and coloured perspectives of the Housing project: living room, kitchen and bedroom, drawn and coloured by hand."
+               data-fr="Grilles de perspective à 2 points de fuite et perspectives mises en couleur du projet Habitat : salon, cuisine et chambre, dessinés et colorés à la main.">Grilles de perspective à 2 points de fuite et perspectives mises en couleur du projet Habitat : salon, cuisine et chambre, dessinés et colorés à la main.</div>
+          <div class="project-tech"><span data-en="Hand drawing" data-fr="Dessin à la main">Dessin à la main</span><span data-en="2 vanishing points" data-fr="2 points de fuite">2 points de fuite</span><span data-en="Colouring" data-fr="Mise en couleur">Mise en couleur</span></div>
+          <ul class="project-gallery" hidden>
+            <li><a href="../assets/projets/perspective-habitat-cuisine.jpg" data-en="Housing project — kitchen" data-fr="Projet Habitat — cuisine">Projet Habitat — cuisine</a></li>
+            <li><a href="../assets/projets/perspective-habitat-chambre.jpg" data-en="Housing project — bedroom" data-fr="Projet Habitat — chambre">Projet Habitat — chambre</a></li>
+            <li><a href="../assets/projets/perspective-grille-salon.jpg" data-en="Two-point perspective grid — living room" data-fr="Grille de perspective à 2 points de fuite — salon">Grille de perspective à 2 points de fuite — salon</a></li>
+            <li><a href="../assets/projets/perspective-grille-cuisine.jpg" data-en="Two-point perspective grid — kitchen" data-fr="Grille de perspective à 2 points de fuite — cuisine">Grille de perspective à 2 points de fuite — cuisine</a></li>
+          </ul>
+        </div>
+
+        <!-- ═══ PLANCHES DESIGN — Eastpak & Venise ═══ -->
+        <div class="project-card reveal reveal-delay-2" data-tech="dessin">
+          <div class="project-img-wrap" data-gallery-open>
+            <img src="../assets/projets/planche-venise.jpg" alt="Planche design sur Venise" class="project-img" loading="lazy"
+                 onerror="this.closest('.project-img-wrap').style.display='none'">
+          </div>
+          <div class="project-header">
+            <div class="project-icon">🖍️</div>
+            <div class="project-links">
+              <button type="button" class="project-link" data-gallery-open title="Voir les planches" aria-label="Voir les planches en grand">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-name" data-en="Design boards — An object and a city" data-fr="Planches design — Un objet, une ville">Planches design — Un objet, une ville</div>
+          <div class="project-desc" data-en="Two design boards: one on an object (an Eastpak pencil case), one on a city (Venice). The goal was to make people want to buy the object or visit the city, by showing as many of its characteristics as possible."
+               data-fr="Deux planches design : l'une sur un objet (une trousse Eastpak), l'autre sur une ville (Venise). Le but : donner envie d'acheter l'objet ou de se rendre dans la ville, en représentant le plus de caractéristiques possible.">Deux planches design : l'une sur un objet (une trousse Eastpak), l'autre sur une ville (Venise). Le but : donner envie d'acheter l'objet ou de se rendre dans la ville, en représentant le plus de caractéristiques possible.</div>
+          <div class="project-tech"><span data-en="Hand drawing" data-fr="Dessin à la main">Dessin à la main</span><span data-en="Colour pencils" data-fr="Crayons de couleur">Crayons de couleur</span><span data-en="Layout" data-fr="Composition">Composition</span></div>
+          <ul class="project-gallery" hidden>
+            <li><a href="../assets/projets/planche-venise.jpg" data-en="City board — Venice" data-fr="Planche ville — Venise">Planche ville — Venise</a></li>
+            <li><a href="../assets/projets/planche-eastpak.jpg" data-en="Object board — “Organisation &amp; simplicity, every day”" data-fr="Planche objet — « Organisation &amp; simplicité au quotidien »">Planche objet — « Organisation &amp; simplicité au quotidien »</a></li>
+          </ul>
+        </div>
+
+        <!-- ═══ SETH PETERSON COTTAGE — plan + coupe façade à la main ═══ -->
+        <div class="project-card reveal reveal-delay-3" data-tech="dessin habitat">
+          <div class="project-img-wrap" data-gallery-open>
+            <img src="../assets/projets/seth-peterson-plan.jpg" alt="Plan aménagé du Seth Peterson Cottage dessiné à la main" class="project-img" loading="lazy"
+                 onerror="this.closest('.project-img-wrap').style.display='none'">
+          </div>
+          <div class="project-header">
+            <div class="project-icon">🌲</div>
+            <div class="project-links">
+              <button type="button" class="project-link" data-gallery-open title="Voir les planches" aria-label="Voir les planches en grand">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-name" data-en="Seth Peterson Cottage — Plan &amp; façade by hand" data-fr="Seth Peterson Cottage — Plan &amp; façade à la main">Seth Peterson Cottage — Plan &amp; façade à la main</div>
+          <div class="project-desc" data-en="A furnished plan and a façade section of the Seth Peterson Cottage (Wisconsin, USA), a house designed by Frank Lloyd Wright, redrawn entirely by hand."
+               data-fr="Plan aménagé et coupe façade du Seth Peterson Cottage (Wisconsin, États-Unis), maison conçue par Frank Lloyd Wright, entièrement redessinés à la main.">Plan aménagé et coupe façade du Seth Peterson Cottage (Wisconsin, États-Unis), maison conçue par Frank Lloyd Wright, entièrement redessinés à la main.</div>
+          <div class="project-tech"><span data-en="Hand drawing" data-fr="Dessin à la main">Dessin à la main</span><span data-en="Furnished plan" data-fr="Plan aménagé">Plan aménagé</span><span data-en="Façade section" data-fr="Coupe façade">Coupe façade</span></div>
+          <ul class="project-gallery" hidden>
+            <li><a href="../assets/projets/seth-peterson-plan.jpg" data-en="Furnished plan, hand-drawn" data-fr="Plan aménagé à la main">Plan aménagé à la main</a></li>
+            <li><a href="../assets/projets/seth-peterson-coupe-facade.jpg" data-en="Façade section, hand-drawn" data-fr="Coupe façade à la main">Coupe façade à la main</a></li>
+          </ul>
+        </div>
+
+        <!-- ═══ PLAN + COUPES D'UNE CHAMBRE — relevé à la main ═══ -->
+        <div class="project-card reveal reveal-delay-3" data-tech="dessin habitat">
+          <div class="project-img-wrap" data-gallery-open>
+            <img src="../assets/projets/chambre-coupe-a.jpg" alt="Coupe A d'une chambre dessinée à la main" class="project-img" loading="lazy"
+                 onerror="this.closest('.project-img-wrap').style.display='none'">
+          </div>
+          <div class="project-header">
+            <div class="project-icon">📏</div>
+            <div class="project-links">
+              <button type="button" class="project-link" data-gallery-open title="Voir les planches" aria-label="Voir les planches en grand">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-name" data-en="Technical drawings of a bedroom" data-fr="Dessins techniques d'une chambre">Dessins techniques d'une chambre</div>
+          <div class="project-desc" data-en="Surveying a bedroom at home, then drawing a plan and two sections to scale (1:20), with every element of a technical drawing: title block, scale bar, compass rose, dimensions and human figures."
+               data-fr="Relevé d'une chambre de ma maison, puis plan et deux coupes à l'échelle (1/20<sup>e</sup>) avec tous les éléments d'un dessin technique : cartouche, échelle, rose des vents, cotations et personnages.">Relevé d'une chambre de ma maison, puis plan et deux coupes à l'échelle (1/20<sup>e</sup>) avec tous les éléments d'un dessin technique : cartouche, échelle, rose des vents, cotations et personnages.</div>
+          <div class="project-tech"><span data-en="Survey" data-fr="Relevé">Relevé</span><span data-en="Scale 1:20" data-fr="Échelle 1/20">Échelle 1/20</span><span data-en="Title block" data-fr="Cartouche">Cartouche</span><span data-en="Dimensions" data-fr="Cotations">Cotations</span></div>
+          <ul class="project-gallery" hidden>
+            <li><a href="../assets/projets/chambre-plan-main.jpg" data-en="Furnished plan, 1:20" data-fr="Plan aménagé au 1/20e">Plan aménagé au 1/20e</a></li>
+            <li><a href="../assets/projets/chambre-coupe-a.jpg" data-en="Section A, 1:20" data-fr="Coupe A au 1/20e">Coupe A au 1/20e</a></li>
+            <li><a href="../assets/projets/chambre-coupe-b.jpg" data-en="Section B, 1:20" data-fr="Coupe B au 1/20e">Coupe B au 1/20e</a></li>
+          </ul>
+        </div>
+
+        <!-- ═══ ATELIERS LEROY MERLIN ═══ -->
+        <!-- La photo « Parquet » du PDF n'est pas reprise : d'autres élèves y sont reconnaissables -->
+        <div class="project-card reveal reveal-delay-4" data-tech="ateliers">
+          <div class="project-img-wrap" data-gallery-open>
+            <img src="../assets/projets/atelier-carrelage.jpg" alt="Atelier carrelage chez Leroy Merlin" class="project-img" loading="lazy"
+                 onerror="this.closest('.project-img-wrap').style.display='none'">
+          </div>
+          <div class="project-header">
+            <div class="project-icon">🛠️</div>
+            <div class="project-links">
+              <button type="button" class="project-link" data-gallery-open title="Voir les photos" aria-label="Voir les photos en grand">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-name" data-en="Meeting the trades — Leroy Merlin workshops" data-fr="À la rencontre des fabricants — Ateliers Leroy Merlin">À la rencontre des fabricants — Ateliers Leroy Merlin</div>
+          <div class="project-desc" data-en="3-to-4-hour DIY workshops with trainers: they first showed the tools and explained how they work and their constraints, then I practised. A way to put myself in the craftspeople's shoes and understand the difficulties of each trade."
+               data-fr="Ateliers de bricolage de 3 à 4 heures avec des formateurs : ils présentaient d'abord les outils, leur fonctionnement et leurs contraintes, puis je pratiquais. Une façon de me mettre à la place des fabricants et de comprendre les difficultés de chaque métier.">Ateliers de bricolage de 3 à 4 heures avec des formateurs : ils présentaient d'abord les outils, leur fonctionnement et leurs contraintes, puis je pratiquais. Une façon de me mettre à la place des fabricants et de comprendre les difficultés de chaque métier.</div>
+          <div class="project-tech"><span data-en="Electricity" data-fr="Électricité">Électricité</span><span data-en="Flooring" data-fr="Parquet">Parquet</span><span data-en="Tiling" data-fr="Carrelage">Carrelage</span><span data-en="Painting" data-fr="Peinture">Peinture</span></div>
+          <ul class="project-gallery" hidden>
+            <li><a href="../assets/projets/atelier-carrelage.jpg" data-en="Tiling" data-fr="Carrelage">Carrelage</a></li>
+            <li><a href="../assets/projets/atelier-electricite.jpg" data-en="Electricity" data-fr="Électricité">Électricité</a></li>
+            <li><a href="../assets/projets/atelier-peinture.jpg" data-en="Painting" data-fr="Peinture">Peinture</a></li>
+          </ul>
+        </div>
+
+        <!-- ═══ CRÉATIONS EN CÉRAMIQUE ═══ -->
+        <div class="project-card reveal reveal-delay-4" data-tech="ateliers">
+          <div class="project-img-wrap" data-gallery-open>
+            <img src="../assets/projets/ceramique-avant-cuisson.jpg" alt="Bols en céramique avant cuisson" class="project-img" loading="lazy"
+                 onerror="this.closest('.project-img-wrap').style.display='none'">
+          </div>
+          <div class="project-header">
+            <div class="project-icon">🏺</div>
+            <div class="project-links">
+              <button type="button" class="project-link" data-gallery-open title="Voir les photos" aria-label="Voir les photos en grand">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-name" data-en="Ceramic creations" data-fr="Créations en céramique">Créations en céramique</div>
+          <div class="project-desc" data-en="Ceramics classes with a professional: modelling, assembling, painting, glazing and firing. A way to understand materials and learn as close as possible to the realities of the craft."
+               data-fr="Cours de céramique avec une professionnelle du métier : modelage, assemblage, peinture, émaillage et cuisson. Une façon de comprendre les matériaux et d'apprendre au plus près des réalités du métier.">Cours de céramique avec une professionnelle du métier : modelage, assemblage, peinture, émaillage et cuisson. Une façon de comprendre les matériaux et d'apprendre au plus près des réalités du métier.</div>
+          <div class="project-tech"><span data-en="Modelling" data-fr="Modelage">Modelage</span><span data-en="Glazing" data-fr="Émaillage">Émaillage</span><span data-en="Firing" data-fr="Cuisson">Cuisson</span><span data-en="Materials" data-fr="Matériaux">Matériaux</span></div>
+          <ul class="project-gallery" hidden>
+            <li><a href="../assets/projets/ceramique-avant-cuisson.jpg" data-en="Before firing" data-fr="Avant cuisson">Avant cuisson</a></li>
+            <li><a href="../assets/projets/ceramique-modelage.jpg" data-en="Modelling" data-fr="Modelage">Modelage</a></li>
+            <li><a href="../assets/projets/ceramique-assemblage.jpg" data-en="Assembling" data-fr="Assemblage">Assemblage</a></li>
+            <li><a href="../assets/projets/ceramique-peinture.jpg" data-en="Painting" data-fr="Peinture">Peinture</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Portfolio complet en PDF (version web : sans téléphone ni adresse) -->
+      <div class="projects-see-all reveal">
+        <a href="../assets/Portfolio_Melissa_Laurent.pdf" target="_blank" rel="noopener" class="btn btn-tertiary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span data-en="Full portfolio (PDF)" data-fr="Portfolio complet (PDF)">Portfolio complet (PDF)</span>
+        </a>
+        <a href="../index.html#contact" class="btn btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          <span data-en="Get in touch" data-fr="Me contacter">Me contacter</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../js/cursor-spotlight.js" defer></script>
+  <script src="../js/lang.js" defer></script>
+  <script src="../js/scroll-reveal.js" defer></script>
+  <script src="../js/nav.js" defer></script>
+  <script src="../js/theme.js" defer></script>
+  <script src="../js/includes.js" defer></script>
+  <script src="../js/project-filter.js" defer></script>
+  <script src="../js/project-img-fit.js" defer></script>
+  <script src="../js/lightbox.js" defer></script>
+
+</body>
+</html>

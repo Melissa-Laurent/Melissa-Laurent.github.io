@@ -1,0 +1,85 @@
+/* ===== LAYOUT ===== */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  /* clamp : padding horizontal fluide entre 1.5rem (mobile) et 3rem (grand écran) */
+  padding: 0 clamp(1.5rem, 5vw, 3rem);
+  position: relative; z-index: 2; /* au-dessus des formes décoratives des sections */
+}
+section { position: relative; padding: 6rem 0; }
+
+/* ===== SECTION LABELS ===== */
+/* Label de section : grand numéro didone bleu marine (comme les « 01 », « 02 »… de son PDF)
+   suivi d'un trait fin et du nom de la section en capitales espacées */
+.section-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  font-family: var(--font-label);
+  font-size: 0.78rem; font-weight: 400;
+  color: var(--text-secondary);
+  letter-spacing: 0.18em; text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.section-num {
+  font-family: var(--font-serif);
+  font-size: 2.6rem; font-weight: 500;
+  line-height: 1; letter-spacing: -0.02em;
+  color: var(--accent);
+}
+/* Trait horizontal entre le numéro et le label — pseudo-élément plutôt qu'une image */
+.section-num::after {
+  content: ''; display: inline-block; vertical-align: middle;
+  width: 32px; height: 1px; margin-left: 0.75rem;
+  background: var(--line);
+}
+.section-title {
+  font-family: var(--font-serif);
+  /* clamp : taille de police responsive entre 2rem et 2.9rem selon la largeur du viewport */
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  font-weight: 500; letter-spacing: -0.015em;
+  color: var(--text-primary);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.section-subtitle {
+  font-size: 1.05rem; color: var(--text-secondary);
+  max-width: 540px; line-height: 1.75;
+  font-style: italic;
+}
+
+/* ===== SCROLL REVEAL ===== */
+/* État initial : élément invisible et décalé vers le bas — prêt pour l'animation d'entrée */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  /* cubic-bezier(0.16,1,0.3,1) : courbe "spring" — démarre vite et ralentit progressivement */
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+              transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+/* Classe ajoutée par JS (IntersectionObserver) quand l'élément entre dans le viewport */
+.reveal.visible { opacity: 1; transform: none; }
+/* Délais échelonnés pour créer un effet de cascade sur les éléments d'un même groupe */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ===== DIVIDER ===== */
+/* Séparateur entre les sections — trait d'encre fin qui s'estompe aux extrémités, comme ses planches */
+.section-divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line) 20%, var(--line) 80%, transparent);
+  opacity: 0.35;
+}
+
+/* ===== FORMES DÉCORATIVES ===== */
+/* Blocs arrondis bleu ciel et cercles pêche qui débordent des bords, signature de son PDF.
+   aria-hidden + pointer-events: none : purement décoratifs */
+.deco {
+  position: absolute; z-index: 0; pointer-events: none;
+}
+.deco-sky-pillar {   /* bloc vertical arrondi, comme sur la couverture */
+  background: var(--sky);
+  border-radius: 0 0 28px 28px;
+}
+.deco-peach-circle { background: var(--peach); border-radius: 50%; }
+.deco-sky-circle   { background: var(--sky);   border-radius: 50%; }

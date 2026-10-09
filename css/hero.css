@@ -1,0 +1,335 @@
+/* ===== HERO ===== */
+#hero {
+  /* 100vh : le hero occupe toute la hauteur de la fenêtre */
+  min-height: 100vh;
+  display: flex; align-items: center;
+  /* padding-top compense la navbar fixe pour que le contenu ne soit pas caché derrière elle */
+  padding-top: var(--nav-height);
+  padding-bottom: 4rem;
+  overflow: hidden; /* coupe les formes décoratives et les étiquettes flottantes */
+}
+/* Décor de la couverture de son PDF : bloc bleu ciel arrondi en haut à droite + croix de traits fins */
+#hero .deco-sky-pillar {
+  top: var(--nav-height); right: 9%; /* part du bas de la navbar (sinon il transparaît à travers le verre dépoli) */
+  width: clamp(90px, 11vw, 150px); height: 46vh;
+}
+#hero .deco-line-v {          /* trait vertical fin, comme celui qui traverse la couverture */
+  top: 12vh; bottom: 10vh; left: 4.5%;
+  width: 1px; background: var(--line); opacity: 0.6;
+}
+#hero .deco-line-h {          /* trait horizontal fin */
+  bottom: 18vh; left: 0; width: 22%;
+  height: 1px; background: var(--line); opacity: 0.6;
+}
+#hero .deco-peach-circle {    /* demi-cercle pêche qui déborde en bas à gauche */
+  width: 220px; height: 220px; left: -110px; bottom: -70px; opacity: 0.85;
+}
+/* Grille 2 colonnes égales pour le contenu texte + la carte visuelle */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center;
+}
+
+/* Badge « Recherche un stage · Juin 2027 » — pastille pêche avec indicateur animé */
+.hero-label {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-label); font-size: 0.78rem; font-weight: 500;
+  color: var(--status-available); letter-spacing: 0.08em;
+  background: var(--status-available-soft); border: 1px solid var(--status-available-soft);
+  padding: 0.35rem 0.9rem; border-radius: 100px; /* pill shape */
+  margin-bottom: 1.5rem;
+}
+/* Pastille animée (point de disponibilité) — créée via ::before sans élément HTML supplémentaire */
+.hero-label::before {
+  content: '';
+  width: 7px; height: 7px;
+  background: var(--status-available);
+  border-radius: 50%;
+  animation: pulse 2s infinite; /* clignotement discret en boucle */
+}
+/* Animation pulse : effet de respiration sur la pastille et le badge de la carte */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+/* Nom en didone, comme « LAURENT Mélissa » sur son CV */
+.hero-name {
+  font-family: var(--font-serif);
+  /* clamp : taille fluide entre 3rem (mobile) et 5rem (desktop large) */
+  font-size: clamp(3rem, 6.5vw, 5rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+/* « Laurent » en dégradé marine — le texte devient transparent et laisse voir le fond dégradé */
+.hero-name em {
+  font-style: italic;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text; /* clip le dégradé en arrière-plan sur la forme du texte */
+  -webkit-text-fill-color: transparent; /* rend le texte transparent pour révéler le dégradé */
+  background-clip: text;
+  padding-right: 0.08em; /* évite que l'italique soit coupé à droite par le clip */
+}
+
+.hero-role {
+  font-size: 1.15rem; font-weight: 400;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  margin-bottom: 0.6rem;
+}
+.hero-typewriter {  /* style du typewriter (animation de frappe en live) */
+  font-size: 0.95rem;
+  font-family: var(--font-label);
+  color: var(--text-muted);
+  margin-bottom: 1.75rem;
+  letter-spacing: 0.02em;
+}
+.tw-word {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1em;
+  color: var(--accent);
+  font-weight: 500;
+}
+.tw-cursor {
+  display: inline-block;
+  color: var(--peach);
+  font-weight: 600;
+  margin-left: 1px;
+  animation: blink 0.75s step-end infinite;
+}
+@keyframes blink {  /* Clignotement du curseur : visible puis invisible en boucle */
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.hero-tagline {
+  font-size: 1.02rem; color: var(--text-secondary);
+  line-height: 1.8; margin-bottom: 2.25rem;
+  max-width: 460px;
+}
+.hero-tagline strong { color: var(--text-primary); font-weight: 600; }
+.hero-ctas {
+  display: flex; gap: 0.75rem; flex-wrap: wrap; /* les boutons passent à la ligne sur petits écrans */
+  max-width: 460px;
+}
+/* Les deux petits boutons partagent la première ligne équitablement */
+.hero-ctas .btn-tertiary,
+.hero-ctas .btn-secondary { flex: 2; justify-content: center; }
+/* « Voir mes projets » prend toute la largeur sous les deux autres */
+.hero-ctas .btn-primary   { flex-basis: 100%; justify-content: center; }
+
+
+/* Classe de base partagée par les boutons et le lien « Me contacter » de la nav */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  border-radius: 10px;
+  will-change: transform;
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+.btn:hover { transform: translateY(-3px) scale(1.03); }
+/* :focus-visible : outline uniquement en navigation clavier, invisible au clic souris */
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* Bouton principal — fond bleu marine, texte crème */
+.btn-primary {
+  font-size: 0.92rem; font-weight: 600;
+  color: var(--on-accent); background: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.8rem 1.6rem;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.25s ease-out,
+              background-color 0.2s ease-out;
+  box-shadow: var(--shadow-accent);
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 10px 28px rgba(42,62,146,0.38);
+}
+/* Bouton secondaire — fond carte avec bordure subtile */
+.btn-secondary {
+  font-size: 0.92rem; font-weight: 500;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 0.8rem 1.6rem;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.25s ease-out,
+              border-color 0.2s ease-out;
+  box-shadow: var(--shadow-sm);
+}
+.btn-secondary:hover {
+  border-color: var(--peach);
+  box-shadow: var(--shadow-md);
+}
+/* Bouton tertiaire — bleu ciel de la charte */
+.btn-tertiary {
+  font-size: 0.92rem; font-weight: 500;
+  color: var(--ink);
+  background: var(--sky);
+  border: 1px solid var(--sky);
+  padding: 0.8rem 1.6rem;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.25s ease-out,
+              color 0.2s ease-out;
+}
+.btn-tertiary:hover {
+  color: var(--navy);
+  box-shadow: var(--shadow-sm);
+}
+
+
+.hero-socials {
+  display: flex; align-items: center; gap: 1rem;
+  margin-top: 2.5rem;
+}
+.hero-socials a {
+  display: flex; align-items: center;
+  font-size: 0.82rem; font-weight: 500;
+  color: var(--text-muted);
+  gap: 0.4rem;
+  transition: color 0.2s;
+}
+.hero-socials a:hover { color: var(--accent); }
+/* Séparateur "·" entre les liens sociaux — user-select: none l'exclut de la sélection de texte */
+.social-sep { color: var(--border); user-select: none; }
+
+/* Hero visual */
+.hero-visual {
+  display: flex; justify-content: center; align-items: center;
+  position: relative; /* contexte de positionnement pour les éléments flottants absolus */
+}
+.hero-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  width: 100%; max-width: 400px;
+  position: relative; z-index: 1;
+}
+/* Cadre d'encre décalé derrière la carte — reprend le rectangle fin autour de « PORTFOLIO » sur sa couverture */
+.hero-card::before {
+  content: '';
+  position: absolute; inset: -18px 18px 18px -18px; /* décalé vers le haut-gauche */
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  z-index: -1;
+  pointer-events: none;
+}
+.hcard-header {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+/* Avatar dans la hero card — rond, même structure que .nav-avatar */
+.hcard-avatar {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--sky);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 1.2rem; color: var(--navy); font-weight: 600;
+  flex-shrink: 0;
+  overflow: hidden;
+  box-shadow: 0 0 0 2px var(--bg-card), 0 0 0 3.5px var(--peach);
+}
+.hcard-avatar img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.hcard-info { flex: 1; min-width: 0; } /* occupe l'espace restant entre l'avatar et le badge */
+.hcard-name { font-family: var(--font-serif); font-size: 1.02rem; font-weight: 600; line-height: 1.2; white-space: nowrap; }
+.hcard-title { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; font-style: italic; white-space: nowrap; }
+/* Badge « Ouverte aux stages » — pêche avec pastille pulsante */
+.hcard-badge {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  font-family: var(--font-label); font-size: 0.66rem; letter-spacing: 0.02em;
+  color: var(--status-available); background: var(--peach-light); border: 1px solid var(--peach-soft);
+  padding: 0.22rem 0.5rem; border-radius: 6px;
+  white-space: nowrap; flex-shrink: 0;
+}
+/* Pastille animée du badge — réutilise la même animation @keyframes pulse */
+.hcard-badge::before {
+  content: ''; width: 6px; height: 6px;
+  background: var(--peach); border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+.hcard-stat {
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+/* Ligne de stat : label à gauche, valeur à droite */
+.hcard-stat-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+}
+.hcard-stat-label {
+  font-size: 0.8rem; color: var(--text-muted);
+  display: flex; align-items: center; gap: 0.4rem;
+  white-space: nowrap;
+}
+.hcard-stat-value {
+  font-size: 0.84rem; font-weight: 600; color: var(--text-primary);
+  text-align: right;
+}
+/* Rangée de chips en bas de la carte */
+.hcard-tech {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+  margin-top: 1.25rem; padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+}
+.tech-chip {
+  font-family: var(--font-label); font-size: 0.7rem; letter-spacing: 0.02em;
+  color: var(--text-secondary);
+  background: var(--bg); border: 1px solid var(--border);
+  padding: 0.2rem 0.6rem; border-radius: 6px;
+}
+/* Variante bleue pour les logiciels principaux */
+.tech-chip.blue { color: var(--accent); background: var(--accent-light); border-color: var(--accent-soft); }
+
+
+/* Étiquettes flottantes — orbitent en suivant le contour rectangulaire de la carte */
+.hero-floating {
+  position: absolute;
+  top: 50%; left: 50%; /* point de départ au centre de la carte */
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  box-shadow: var(--shadow-md);
+  font-size: 0.8rem; font-weight: 500;
+  display: flex; align-items: center; gap: 0.5rem;
+  white-space: nowrap;
+  z-index: 2;
+}
+/*
+  Orbite rectangulaire autour de la carte (~400px × 380px) avec 35px de marge.
+  Rectangle : ±235px horizontal, ±225px vertical → périmètre 1840px.
+  Les % aux coins sont proportionnels aux longueurs des côtés pour une vitesse constante :
+  - côté haut/bas  : 470px → 470/1840 = 25.54%
+  - côté droit/gauche : 450px → 450/1840 = 24.46%
+  Sens horaire depuis coin haut-gauche.
+*/
+@keyframes orbit-rect {
+  0%      { transform: translate(calc(-50% - 235px), calc(-50% - 225px)); } /* haut-gauche   */
+  25.54%  { transform: translate(calc(-50% + 235px), calc(-50% - 225px)); } /* haut-droit    */
+  50%     { transform: translate(calc(-50% + 235px), calc(-50% + 225px)); } /* bas-droit     */
+  75.54%  { transform: translate(calc(-50% - 235px), calc(-50% + 225px)); } /* bas-gauche    */
+  100%    { transform: translate(calc(-50% - 235px), calc(-50% - 225px)); } /* haut-gauche   */
+}
+.hero-floating.f1 { animation: orbit-rect 28s linear infinite; animation-delay: 0s; }
+.hero-floating.f2 { animation: orbit-rect 28s linear infinite; animation-delay: calc(-28s / 3); }
+.hero-floating.f3 { animation: orbit-rect 28s linear infinite; animation-delay: calc(-28s * 2 / 3); }
+
+/* Accessibilité : désactive les animations pour les utilisateurs qui le préfèrent */
+@media (prefers-reduced-motion: reduce) {
+  .hero-floating { animation: none; }
+  .hero-floating.f1 { transform: translate(calc(-50% + 150px), calc(-50% - 225px)); }
+  .hero-floating.f2 { transform: translate(calc(-50% + 170px), calc(-50% + 225px)); }
+  .hero-floating.f3 { transform: translate(calc(-50% - 200px), calc(-50% + 120px)); }
+  .tw-cursor    { animation: none; }
+  .hero-label::before   { animation: none; }
+  .hcard-badge::before { animation: none; }
+}

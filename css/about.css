@@ -1,0 +1,101 @@
+/* ===== ABOUT ===== */
+#about { background: var(--bg); overflow: hidden; }
+/* Pilier pêche arrondi à droite, comme sur la page « À propos de moi » de son PDF */
+#about .deco-peach-pillar {
+  top: 30%; right: -40px;
+  width: 80px; height: 340px;
+  background: var(--peach); border-radius: 40px;
+  opacity: 0.9;
+}
+/* Grille asymétrique : colonne de droite 20% plus large pour accueillir plus de texte */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem; align-items: start;
+}
+
+/* Portrait — bloc bleu ciel décalé derrière la photo, comme sur la page « MOI » */
+.about-portrait {
+  position: relative;
+  margin: 2rem 1.25rem 0 0;
+}
+.about-portrait::before {
+  content: '';
+  position: absolute; inset: 1.25rem -1.25rem -1.25rem 1.25rem;
+  background: var(--sky);
+  border-radius: var(--radius-sm);
+  z-index: 0;
+}
+.about-portrait img {
+  position: relative; z-index: 1;
+  width: 100%; height: 340px;
+  object-fit: cover; object-position: 50% 22%;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+}
+
+/* Points forts : rangée de 4 cartes pleine largeur sous la grille (équilibre les deux colonnes) */
+.about-highlights {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+  margin-top: 3.5rem;
+}
+.highlight-item {
+  display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-start;
+  padding: 1.1rem 1.25rem;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: all 0.25s ease;
+}
+/* Au survol : léger glissement horizontal + fond bleu ciel pâle */
+.highlight-item:hover {
+  border-color: var(--accent-soft);
+  background-color: var(--accent-light);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-4px) scale(1.02);
+}
+.highlight-icon {
+  font-size: 1.25rem; flex-shrink: 0; /* empêche l'icône de rétrécir si le texte est long */
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--peach-light); border-radius: 50%;
+}
+.highlight-text h4 { font-size: 0.95rem; font-weight: 600; }
+.highlight-text p { font-size: 0.85rem; color: var(--text-secondary); margin-top: 2px; font-style: italic; }
+.about-content p {
+  color: var(--text-secondary); font-size: 1.02rem;
+  line-height: 1.85; margin-bottom: 1.25rem;
+}
+.about-content strong { color: var(--text-primary); font-weight: 600; }
+/* Citation finale en didone italique */
+.about-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.35rem !important;
+  line-height: 1.5 !important;
+  color: var(--accent) !important;
+  border-left: 2px solid var(--peach);
+  padding-left: 1rem;
+}
+/* Grille 2×2 pour les métadonnées (localisation, dispo, formation, passions) */
+.about-meta {
+  margin-top: 2rem;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.meta-item {
+  padding: 1.1rem 1.25rem;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+/* Modificateurs : écrasent uniquement la couleur de bordure et de fond, le reste vient de .meta-item */
+.meta-item--available   { border-color: var(--peach);              background: var(--peach-light); }
+.meta-item--unavailable { border-color: var(--status-unavailable); background: var(--status-unavailable-soft); }
+
+/* .label et .value partagés par toutes les variantes via le sélecteur de base .meta-item */
+.meta-item .label { font-family: var(--font-label); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-muted); margin-bottom: 0.3rem; }
+.meta-item .value { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 0.35rem; }
+/* Seule la couleur du .value change selon la variante */
+.meta-item--available .value   { color: var(--status-available); }
+.meta-item--unavailable .value { color: var(--status-unavailable); }

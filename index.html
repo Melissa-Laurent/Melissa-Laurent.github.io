@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" /> <!-- pour les caractères spéciaux (é, è, à…) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- viewport : indispensable pour le responsive -->
+
+  <title>Mélissa Laurent — Architecture d'intérieur</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Portfolio de Mélissa Laurent, étudiante en architecture d'intérieur à Ynov Campus Val d'Europe. Projets habitat et ERP, maquettes, plans AutoCAD et dessins à la main. Recherche un stage BIM de 5 semaines en juin 2027." />
+
+  <!-- Open Graph (LinkedIn, Facebook, WhatsApp…) : aperçu affiché quand on partage le lien -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://melissa-laurent.github.io/" />
+  <meta property="og:title"       content="Mélissa Laurent — Architecture d'intérieur" />
+  <meta property="og:description" content="Projets habitat et ERP, maquettes, plans AutoCAD et dessins à la main. Recherche un stage BIM de 5 semaines en juin 2027." />
+  <meta property="og:image"       content="https://melissa-laurent.github.io/assets/projets/appart-coupe-texturee-1.jpg" />
+  <meta property="og:locale"      content="fr_FR" />
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" /> <!-- Favicon SVG : vectoriel, net à toutes les tailles -->
+
+  <!-- preconnect : établit la connexion DNS+TCP en avance pour les serveurs Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Polices : Bodoni Moda (≈ Sakire, titres didone), Figtree (≈ SFT Schrifted Round, texte), Outfit (≈ Nexa, labels) -->
+  <!-- preload : ordonne au navigateur de télécharger le CSS des polices EN PRIORITÉ, sans bloquer le rendu -->
+  <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..700;1,400..700&family=Figtree:ital,wght@0,300..700;1,300..700&family=Outfit:wght@200..600&display=swap" />
+
+  <!-- media="print" → chargement NON-bloquant ; onload bascule media vers "all" une fois chargé (display=swap) -->
+  <link rel="stylesheet" media="print"
+        onload="this.media='all';this.onload=null"
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..700;1,400..700&family=Figtree:ital,wght@0,300..700;1,300..700&family=Outfit:wght@200..600&display=swap" />
+
+  <!-- fallback noscript : charge les polices normalement si JavaScript est désactivé -->
+  <noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..700;1,400..700&family=Figtree:ital,wght@0,300..700;1,300..700&family=Outfit:wght@200..600&display=swap" />
+  </noscript>
+
+  <!-- theme-init.js : chargé SANS defer ni async pour s'exécuter avant le CSS — applique le bon thème dès le premier rendu (anti-flash) -->
+  <script src="js/theme-init.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- Barre de progression de lecture — animée en CSS pur via animation-timeline: scroll() -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ===== NAVBAR (injectée via js/includes.js) ===== -->
+  <div id="nav-placeholder"></div>
+
+
+  <!-- ===== HERO ===== -->
+  <section id="hero">
+    <!-- Décor de la couverture de son PDF : bloc bleu ciel, traits fins, cercle pêche -->
+    <div class="deco deco-sky-pillar" aria-hidden="true"></div>
+    <div class="deco deco-line-v" aria-hidden="true"></div>
+    <div class="deco deco-line-h" aria-hidden="true"></div>
+    <div class="deco deco-peach-circle" aria-hidden="true"></div>
+
+    <div class="container">
+      <!-- hero-grid : grille 2 colonnes (texte à gauche, carte visuelle à droite) -->
+      <div class="hero-grid">
+        <div>
+          <!-- reveal : classe déclenchant l'animation d'entrée (opacity + translateY) via IntersectionObserver -->
+          <div class="hero-label reveal" data-en="Looking for an internship · June 2027" data-fr="Recherche un stage · Juin 2027">Recherche un stage · Juin 2027</div>
+          <h1 class="hero-name reveal reveal-delay-1">Mélissa<br><em>Laurent</em></h1>
+
+          <p class="hero-role reveal reveal-delay-2" data-en="Interior Architecture Student · Ynov Val d'Europe" data-fr="Étudiante en architecture d'intérieur · Ynov Val d'Europe">Étudiante en architecture d'intérieur · Ynov Val d'Europe</p>
+
+          <p class="hero-typewriter reveal reveal-delay-3" data-tw="hero">
+            <span class="tw-prefix" data-en="I design · " data-fr="Je conçois · ">Je conçois · </span><span class="tw-word"></span><span class="tw-cursor" aria-hidden="true">|</span>
+          </p>
+
+          <p class="hero-tagline reveal reveal-delay-4">
+            <!-- Le span intérieur porte les attributs data-* pour que le JS puisse remplacer innerHTML (et interpréter <strong>) -->
+            <span data-en="Second-year interior architecture student at <strong>Ynov Campus</strong>. I combine space design, technical drawing and scale models, and I'm heading towards <strong>digital construction and BIM</strong>."
+                  data-fr="Étudiante en 2<sup>e</sup> année d'architecture d'intérieur à <strong>Ynov Campus</strong>. J'allie conception d'espace, dessin technique et maquette, et je m'oriente vers le <strong>bâtiment numérique et le BIM</strong>.">
+              Étudiante en 2<sup>e</sup> année d'architecture d'intérieur à <strong>Ynov Campus</strong>. J'allie conception d'espace, dessin technique et maquette, et je m'oriente vers le <strong>bâtiment numérique et le BIM</strong>.
+            </span>
+          </p>
+          <div class="hero-ctas reveal reveal-delay-5">
+            <!-- download : déclenche le téléchargement plutôt que la navigation -->
+            <a href="assets/CV_Melissa_Laurent.pdf" download class="btn btn-tertiary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span data-en="Download CV" data-fr="Télécharger le CV">Télécharger le CV</span>
+            </a>
+            <!-- href="mailto:" : ouvre le client mail de l'utilisateur avec l'adresse pré-remplie -->
+            <a href="mailto:melissa_laurent@icloud.com" class="btn btn-secondary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+              <span data-en="Get in touch" data-fr="Me contacter">Me contacter</span>
+            </a>
+            <a href="html/projects.html" class="btn btn-primary">
+              <!-- SVG inline : icône maison — stroke="currentColor" hérite la couleur du texte parent -->
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 10.5L12 3l9 7.5V21H3z"/><path d="M9 21v-6h6v6"/></svg>
+              <span data-en="View my projects" data-fr="Voir mes projets">Voir mes projets</span>
+            </a>
+          </div>
+          <div class="hero-socials reveal reveal-delay-5">
+            <!-- target="_blank" : ouvre le lien dans un nouvel onglet (liens externes) -->
+            <a href="https://www.linkedin.com/in/PSEUDO_LINKEDIN/" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+            <span class="social-sep">·</span>
+            <a href="https://www.instagram.com/PSEUDO_INSTAGRAM/" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>
+              Instagram
+            </a>
+            <!-- social-sep : séparateur "·" exclu de la sélection de texte (user-select: none en CSS) -->
+            <span class="social-sep">·</span>
+            <a href="https://github.com/Melissa-Laurent" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+
+        <!-- Hero Visual Card : carte de profil, cachée sur mobile (display: none via @media) -->
+        <div class="hero-visual reveal reveal-delay-2">
+          <!-- Conteneur relatif nécessaire pour positionner les étiquettes flottantes en absolu -->
+          <div style="position:relative;width:100%;max-width:420px;">
+            <div class="hero-card">
+              <div class="hcard-header">
+                <div class="hcard-avatar">
+                  <img src="assets/PDP.jpg" alt="Mélissa Laurent">
+                </div>
+                <div class="hcard-info">
+                  <div class="hcard-name">Mélissa Laurent</div>
+                  <div class="hcard-title" data-en="Interior architecture" data-fr="Architecture d'intérieur">Architecture d'intérieur</div>
+                </div>
+                <!-- Badge avec pastille pêche animée (définie via ::before en CSS) -->
+                <div class="hcard-badge" data-en="Open to internships" data-fr="Ouverte aux stages">Ouverte aux stages</div>
+              </div>
+              <!-- Statistiques de la carte : stage, école, formation, objectif -->
+              <div class="hcard-stat">
+                <div class="hcard-stat-row">
+                  <span class="hcard-stat-label">🔎 <span data-en="Internship" data-fr="Stage">Stage</span></span>
+                  <span class="hcard-stat-value" data-en="June 2027 · 5 weeks" data-fr="Juin 2027 · 5 semaines">Juin 2027 · 5 semaines</span>
+                </div>
+                <div class="hcard-stat-row">
+                  <span class="hcard-stat-label">🎓 <span data-en="School" data-fr="École">École</span></span>
+                  <span class="hcard-stat-value">Ynov Campus · Val d'Europe</span>
+                </div>
+                <div class="hcard-stat-row">
+                  <span class="hcard-stat-label">📐 <span data-en="Program" data-fr="Formation">Formation</span></span>
+                  <span class="hcard-stat-value" data-en="Interior archi. · 2nd year" data-fr="Archi. d'intérieur · 2<sup>e</sup> année">Archi. d'intérieur · 2<sup>e</sup> année</span>
+                </div>
+                <div class="hcard-stat-row">
+                  <span class="hcard-stat-label">🏗️ <span data-en="Goal" data-fr="Objectif">Objectif</span></span>
+                  <span class="hcard-stat-value" data-en="Digital construction / BIM" data-fr="Bâtiment numérique / BIM">Bâtiment numérique / BIM</span>
+                </div>
+              </div>
+              <!-- Chips : class="blue" pour les logiciels principaux (style accentué) -->
+              <div class="hcard-tech">
+                <span class="tech-chip blue">AutoCAD</span>
+                <span class="tech-chip blue">InDesign</span>
+                <span class="tech-chip blue">Photoshop</span>
+                <span class="tech-chip">Archicad</span>
+                <span class="tech-chip">Revit</span>
+                <span class="tech-chip" data-en="Scale models" data-fr="Maquettes">Maquettes</span>
+                <span class="tech-chip" data-en="Hand drawing" data-fr="Dessin à la main">Dessin à la main</span>
+                <span class="tech-chip">Moodboards</span>
+              </div>
+            </div>
+            <!-- Étiquettes flottantes qui orbitent autour de la carte (animation CSS "orbit-rect") -->
+            <div class="hero-floating f1">📐 <span data-en="AutoCAD plans &amp; sections" data-fr="Plans &amp; coupes AutoCAD">Plans &amp; coupes AutoCAD</span></div>
+            <div class="hero-floating f2">🏠 <span data-en="Scale models" data-fr="Maquettes à l'échelle">Maquettes à l'échelle</span></div>
+            <div class="hero-floating f3">✏️ <span data-en="Hand-drawn perspectives" data-fr="Perspectives à la main">Perspectives à la main</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Séparateur visuel entre sections : trait d'encre fin -->
+  <div class="section-divider"></div>
+
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
+    <div class="deco deco-peach-pillar" aria-hidden="true"></div>
+    <div class="container">
+      <!-- about-grid : grille 2 colonnes asymétriques (titre + portrait à gauche, texte + méta à droite) -->
+      <div class="about-grid">
+        <div>
+          <!-- section-eyebrow : grand numéro didone + label en capitales (comme les « 01 », « 02 »… de son PDF) -->
+          <p class="section-eyebrow reveal"><span class="section-num">01</span><span data-en="About me" data-fr="À propos de moi">À propos de moi</span></p>
+          <h2 class="section-title reveal reveal-delay-1" data-en="Designing spaces, from sketch to digital model" data-fr="Concevoir des espaces, du croquis à la maquette numérique">Concevoir des espaces, du croquis à la maquette numérique</h2>
+          <!-- Portrait : bloc bleu ciel décalé derrière la photo, comme sur la page « MOI » de son PDF -->
+          <div class="about-portrait reveal reveal-delay-2">
+            <img src="assets/Melissa.jpg" alt="Portrait de Mélissa Laurent" loading="lazy">
+          </div>
+        </div>
+        <div>
+          <!-- Paragraphes biographiques (repris de la page « À propos de moi » de son portfolio) -->
+          <div class="about-content reveal reveal-delay-1">
+            <p data-en="My name is Mélissa and I'm a second-year interior architecture student at <strong>Ynov Campus, Val d'Europe</strong>. I want to build professional experience that combines space design, technical drawing and digital construction."
+               data-fr="Je m'appelle Mélissa et je suis en deuxième année d'architecture d'intérieur à <strong>Ynov Campus, Val d'Europe</strong>. Je souhaite développer une expérience professionnelle qui allie conception d'espace, dessin technique et numérique du bâtiment.">Je m'appelle Mélissa et je suis en deuxième année d'architecture d'intérieur à <strong>Ynov Campus, Val d'Europe</strong>. Je souhaite développer une expérience professionnelle qui allie conception d'espace, dessin technique et numérique du bâtiment.</p>
+            <p data-en="A year of <strong>urban engineering</strong> studies and an internship at <strong>SPIE Batignolles Valérian</strong> gave me solid foundations: reading plans, understanding a construction site and its technical constraints. I now want to put them to work in a <strong>5-week internship in June 2027</strong>, to discover hands-on how teams work with BIM and digital models."
+               data-fr="Mon année en <strong>génie urbain</strong> et mon stage chez <strong>SPIE Batignolles Valérian</strong> m'ont donné des bases en lecture de plans, en compréhension du chantier et en contraintes techniques. Je souhaite aujourd'hui les mettre au service d'un <strong>stage de 5 semaines en juin 2027</strong>, pour découvrir concrètement les méthodes de travail liées au BIM et à la maquette numérique.">Mon année en <strong>génie urbain</strong> et mon stage chez <strong>SPIE Batignolles Valérian</strong> m'ont donné des bases en lecture de plans, en compréhension du chantier et en contraintes techniques. Je souhaite aujourd'hui les mettre au service d'un <strong>stage de 5 semaines en juin 2027</strong>, pour découvrir concrètement les méthodes de travail liées au BIM et à la maquette numérique.</p>
+            <p data-en="People describe me as easy-going, calm and a good listener, which helps me work well in a team and build a good relationship with clients."
+               data-fr="On dit de moi que je suis simple, calme et à l'écoute, ce qui me permet de travailler efficacement en équipe et d'établir une bonne relation avec les clients.">On dit de moi que je suis simple, calme et à l'écoute, ce qui me permet de travailler efficacement en équipe et d'établir une bonne relation avec les clients.</p>
+            <p class="about-quote" data-en="“Today I feel I'm where I belong: I'm building my future.”" data-fr="« Aujourd'hui je me sens à ma place : je crée mon avenir. »">« Aujourd'hui je me sens à ma place : je crée mon avenir. »</p>
+          </div>
+          <!-- Grille 2×2 de métadonnées rapides (localisation, disponibilité, formation, passions) -->
+          <div class="about-meta reveal reveal-delay-2">
+            <div class="meta-item">
+              <div class="label" data-en="Location" data-fr="Localisation">Localisation</div>
+              <div class="value">📍 Bussy-Saint-Georges</div>
+            </div>
+            <div class="meta-item meta-item--available">
+              <div class="label" data-en="Availability" data-fr="Disponibilité">Disponibilité</div>
+              <div class="value" data-en="🗓 June 2027 · 5 wks" data-fr="🗓 Juin 2027 · 5 sem.">🗓 Juin 2027 · 5 sem.</div>
+            </div>
+            <div class="meta-item">
+              <div class="label" data-en="Study" data-fr="Formation">Formation</div>
+              <div class="value">🎓 Ynov · Bachelor</div>
+            </div>
+            <div class="meta-item">
+              <div class="label" data-en="Hobbies" data-fr="Passions">Passions</div>
+              <div class="value" data-en="🏺 Ceramics · ✏️ Drawing" data-fr="🏺 Céramique · ✏️ Dessin">🏺 Céramique · ✏️ Dessin</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Points forts : rangée pleine largeur sous la grille (stage BIM, plans, maquettes, langues) -->
+      <div class="about-highlights">
+        <div class="highlight-item reveal reveal-delay-2">
+          <div class="highlight-icon">🏗️</div>
+          <div class="highlight-text">
+            <h4 data-en="Heading for BIM" data-fr="Cap sur le BIM">Cap sur le BIM</h4>
+            <p data-en="Looking for a 5-week internship in June 2027 to discover BIM and digital modelling workflows" data-fr="Recherche un stage de 5 semaines en juin 2027 pour découvrir le BIM et la maquette numérique">Recherche un stage de 5 semaines en juin 2027 pour découvrir le BIM et la maquette numérique</p>
+          </div>
+        </div>
+        <div class="highlight-item reveal reveal-delay-3">
+          <div class="highlight-icon">📐</div>
+          <div class="highlight-text">
+            <h4 data-en="From site survey to plan" data-fr="Du relevé au plan">Du relevé au plan</h4>
+            <p data-en="Site surveys, as-built plans, furnished plans and dimensioned sections on AutoCAD" data-fr="Relevés sur site, plans de l'existant (EDE), plans aménagés et coupes cotées sur AutoCAD">Relevés sur site, plans de l'existant (EDE), plans aménagés et coupes cotées sur AutoCAD</p>
+          </div>
+        </div>
+        <div class="highlight-item reveal reveal-delay-4">
+          <div class="highlight-icon">🏠</div>
+          <div class="highlight-text">
+            <h4 data-en="Hands-on" data-fr="Les mains dans la matière">Les mains dans la matière</h4>
+            <p data-en="Study and detail models, ceramics, DIY workshops: understanding materials up close" data-fr="Maquettes d'étude et de détail, céramique, ateliers bricolage : comprendre les matériaux au plus près">Maquettes d'étude et de détail, céramique, ateliers bricolage : comprendre les matériaux au plus près</p>
+          </div>
+        </div>
+        <div class="highlight-item reveal reveal-delay-5">
+          <div class="highlight-icon">🌍</div>
+          <div class="highlight-text">
+            <h4 data-en="Languages &amp; licence" data-fr="Langues &amp; permis">Langues &amp; permis</h4>
+            <p data-en="French · Spanish (B1) · English (A2) · Driving licence (B)" data-fr="Français · Espagnol (B1) · Anglais (A2) · Permis B">Français · Espagnol (B1) · Anglais (A2) · Permis B</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="section-divider"></div>
+
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills">
+    <div class="container">
+      <p class="section-eyebrow reveal"><span class="section-num">02</span><span data-en="Skills" data-fr="Compétences">Compétences</span></p>
+      <h2 class="section-title reveal reveal-delay-1" data-en="What I work with" data-fr="Mes outils">Mes outils</h2>
+      <p class="section-subtitle reveal reveal-delay-2" data-en="Design software, representation techniques and know-how picked up in workshops." data-fr="Logiciels de conception, techniques de représentation et savoir-faire acquis en atelier.">Logiciels de conception, techniques de représentation et savoir-faire acquis en atelier.</p>
+      <p class="hero-typewriter" data-tw="methode">
+        <span class="tw-prefix" data-en="My design process: " data-fr="Ma méthode de projet : ">Ma méthode de projet : </span>
+        <span class="tw-word"></span>
+        <span class="tw-cursor" aria-hidden="true">|</span>
+      </p>
+      <!-- Chaque skills-category : titre de catégorie + grille de tags -->
+      <div class="skills-category reveal reveal-delay-1">
+        <div class="skills-cat-title" data-en="Software" data-fr="Logiciels">Logiciels</div>
+        <div class="skills-grid">
+          <!-- skill-logo : monogramme aux couleurs de la charte (pas de logo externe à charger) -->
+          <span class="skill-tag featured"><span class="skill-logo skill-logo--navy">Ac</span>AutoCAD <small data-en="2D plans · dimensions" data-fr="plans 2D · cotations">plans 2D · cotations</small></span>
+          <span class="skill-tag featured"><span class="skill-logo skill-logo--peach">Id</span>InDesign <small data-en="layout · project boards" data-fr="mise en page · présentation">mise en page · présentation</small></span>
+          <span class="skill-tag featured"><span class="skill-logo">Ps</span>Photoshop <small data-en="textured plans" data-fr="plans texturés">plans texturés</small></span>
+          <span class="skill-tag"><span class="skill-logo skill-logo--ink">Ar</span>Archicad <small data-en="learning" data-fr="en cours d'apprentissage">en cours d'apprentissage</small></span>
+          <span class="skill-tag"><span class="skill-logo skill-logo--ink">Rv</span>Revit <small data-en="self-taught, in progress" data-fr="auto-initiation en cours">auto-initiation en cours</small></span>
+        </div>
+      </div>
+      <div class="skills-category reveal reveal-delay-2">
+        <div class="skills-cat-title" data-en="Representation" data-fr="Représentation">Représentation</div>
+        <div class="skills-grid">
+          <span class="skill-tag featured" data-en="Furnished plans" data-fr="Plans aménagés">Plans aménagés</span>
+          <span class="skill-tag featured" data-en="Dimensioned sections" data-fr="Coupes cotées">Coupes cotées</span>
+          <span class="skill-tag" data-en="As-built plans (EDE)" data-fr="Plans de l'existant (EDE)">Plans de l'existant (EDE)</span>
+          <span class="skill-tag" data-en="Textured sections" data-fr="Coupes texturées">Coupes texturées</span>
+          <span class="skill-tag featured" data-en="2-point perspective" data-fr="Perspective à 2 points de fuite">Perspective à 2 points de fuite</span>
+          <span class="skill-tag" data-en="Hand drawing" data-fr="Dessin à la main">Dessin à la main</span>
+          <span class="skill-tag featured">Moodboards</span>
+          <span class="skill-tag" data-en="Design boards" data-fr="Planches design">Planches design</span>
+        </div>
+      </div>
+      <div class="skills-category reveal reveal-delay-3">
+        <div class="skills-cat-title" data-en="Models &amp; materials" data-fr="Maquettes &amp; matériaux">Maquettes &amp; matériaux</div>
+        <div class="skills-grid">
+          <span class="skill-tag featured" data-en="Study model" data-fr="Maquette d'étude">Maquette d'étude</span>
+          <span class="skill-tag featured" data-en="Detail model" data-fr="Maquette de détail">Maquette de détail</span>
+          <span class="skill-tag" data-en="Concept model" data-fr="Maquette concept">Maquette concept</span>
+          <span class="skill-tag" data-en="Ceramics" data-fr="Céramique">Céramique</span>
+          <span class="skill-tag" data-en="Electricity" data-fr="Électricité">Électricité</span>
+          <span class="skill-tag" data-en="Tiling" data-fr="Carrelage">Carrelage</span>
+          <span class="skill-tag" data-en="Flooring" data-fr="Parquet">Parquet</span>
+          <span class="skill-tag" data-en="Painting" data-fr="Peinture">Peinture</span>
+        </div>
+      </div>
+      <div class="skills-category reveal reveal-delay-4">
+        <div class="skills-cat-title" data-en="Qualities" data-fr="Qualités">Qualités</div>
+        <div class="skills-grid">
+          <span class="skill-tag featured" data-en="Creativity" data-fr="Créativité">Créativité</span>
+          <span class="skill-tag featured" data-en="Organisation" data-fr="Organisation">Organisation</span>
+          <span class="skill-tag" data-en="Team spirit" data-fr="Cohésion d'équipe">Cohésion d'équipe</span>
+          <span class="skill-tag featured" data-en="Eye for detail" data-fr="Sens du détail">Sens du détail</span>
+          <span class="skill-tag" data-en="Good listener" data-fr="À l'écoute">À l'écoute</span>
+          <span class="skill-tag" data-en="Calm" data-fr="Calme">Calme</span>
+          <span class="skill-tag" data-en="Adaptability" data-fr="Adaptabilité">Adaptabilité</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects">
+    <div class="deco deco-sky-circle" aria-hidden="true"></div>
+    <div class="container">
+      <p class="section-eyebrow reveal"><span class="section-num">03</span><span data-en="Projects" data-fr="Projets">Projets</span></p>
+      <h2 class="section-title reveal reveal-delay-1" data-en="Things I've designed" data-fr="Ce que j'ai conçu">Ce que j'ai conçu</h2>
+      <p class="section-subtitle reveal reveal-delay-2" data-en="From the aparthotel to the open-plan office, from AutoCAD plans to detail models. Click an image to see every board." data-fr="De l'appartement-hôtel à l'open-space, du plan AutoCAD à la maquette de détail. Cliquez sur une image pour voir toutes les planches.">De l'appartement-hôtel à l'open-space, du plan AutoCAD à la maquette de détail. Cliquez sur une image pour voir toutes les planches.</p>
+
+      <!-- Filtres par catégorie — data-en/data-fr géré par lang.js ; compteurs ajoutés par project-filter.js -->
+      <div class="project-filters reveal reveal-delay-3">
+        <button class="pf-btn pf-active" data-filter="all" data-en="All" data-fr="Tout">Tout</button>
+        <button class="pf-btn" data-filter="habitat" data-en="Housing" data-fr="Habitat">Habitat</button>
+        <button class="pf-btn" data-filter="erp">ERP</button>
+        <button class="pf-btn" data-filter="maquette" data-en="Models" data-fr="Maquettes">Maquettes</button>
+        <button class="pf-btn" data-filter="dessin" data-en="Drawing" data-fr="Dessin">Dessin</button>
+        <button class="pf-btn" data-filter="autocad">AutoCAD</button>
+      </div>
+
+      <!-- projects-grid : grille 2 colonnes ; la carte "featured" occupe les 2 colonnes (grid-column: span 2) -->
+      <div class="projects-grid">
+
+        <!-- FEATURED : projet Habitat — appartement-hôtel -->
+        <div class="project-card featured reveal reveal-delay-1" data-tech="habitat autocad">
+          <!-- data-gallery-open : un clic ouvre la visionneuse avec toutes les planches listées dans .project-gallery -->
+          <div class="project-img-wrap" data-gallery-open>
+            <img src="assets/projets/appart-coupe-texturee-1.jpg" alt="Coupe texturée de l'appartement-hôtel" class="project-img" loading="lazy"
+                 onerror="this.closest('.project-img-wrap').style.display='none'">
+          </div>
+          <div class="project-header">
+            <div class="project-icon">🏠</div>
+            <div class="project-links">
+              <button type="button" class="project-link" data-gallery-open title="Voir les planches" aria-label="Voir les planches en grand">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <!-- Badge pêche indiquant l'année et le contexte -->
+          <div class="project-highlight-badge">⭐ <span data-en="1st-year project · Ynov 2025/2026" data-fr="Projet de B1 · Ynov 2025/2026">Projet de B1 · Ynov 2025/2026</span></div>
+          <div class="project-name" data-en="Housing project — Aparthotel renovation" data-fr="Projet Habitat — Rénovation d'un appartement-hôtel">Projet Habitat — Rénovation d'un appartement-hôtel</div>
+          <div class="project-desc" data-en="Designing an interior layout from an existing survey. After surveying the site and discussing the brief with the client, I drew the as-built plans for the inventory file. With my project partner we then imagined a <strong>moon / sun</strong> concept to keep one guiding line across the whole apartment, and produced plans, furnished sections, room-by-room moodboards and perspectives for the client presentation."
+               data-fr="Conception d'un aménagement intérieur à partir d'un relevé existant. Après le relevé sur site et l'échange avec le client sur le cahier des charges, j'ai réalisé les plans de l'existant pour le dossier d'état des lieux. Avec ma binôme, nous avons imaginé un concept <strong>lune / soleil</strong> pour garder une même ligne directrice dans tout l'appartement, puis produit plans, coupes aménagées, moodboards par pièce et perspectives pour la présentation client.">Conception d'un aménagement intérieur à partir d'un relevé existant. Après le relevé sur site et l'échange avec le client sur le cahier des charges, j'ai réalisé les plans de l'existant pour le dossier d'état des lieux. Avec ma binôme, nous avons imaginé un concept <strong>lune / soleil</strong> pour garder une même ligne directrice dans tout l'appartement, puis produit plans, coupes aménagées, moodboards par pièce et perspectives pour la présentation client.</div>
+          <!-- Tags : logiciels et livrables -->
+          <div class="project-tech">
+            <span>AutoCAD</span><span>Photoshop</span><span>InDesign</span><span data-en="Site survey" data-fr="Relevé">Relevé</span><span data-en="As-built plans" data-fr="Plans EDE">Plans EDE</span><span data-en="Textured sections" data-fr="Coupes texturées">Coupes texturées</span><span>Moodboards</span>
+          </div>
+          <!-- Planches affichées dans la visionneuse (liste invisible, lue par js/lightbox.js) -->
+          <ul class="project-gallery" hidden>
+            <li><a href="assets/projets/appart-coupe-texturee-1.jpg" data-en="Textured section (AutoCAD + Photoshop)" data-fr="Coupe texturée (AutoCAD + Photoshop)">Coupe texturée (AutoCAD + Photoshop)</a></li>
+            <li><a href="assets/projets/appart-coupe-texturee-2.jpg" data-en="Textured section (AutoCAD + Photoshop)" data-fr="Coupe texturée (AutoCAD + Photoshop)">Coupe texturée (AutoCAD + Photoshop)</a></li>
+            <li><a href="assets/projets/appart-plan-amenage.jpg" data-en="Furnished plan (AutoCAD)" data-fr="Plan aménagé (AutoCAD)">Plan aménagé (AutoCAD)</a></li>
+            <li><a href="assets/projets/appart-plan-ede.jpg" data-en="Dimensioned as-built plan (AutoCAD)" data-fr="Plan de l'existant coté (AutoCAD)">Plan de l'existant coté (AutoCAD)</a></li>
+            <li><a href="assets/projets/appart-coupe-cotee-1.jpg" data-en="Dimensioned furnished section (AutoCAD)" data-fr="Coupe aménagée cotée (AutoCAD)">Coupe aménagée cotée (AutoCAD)</a></li>
+            <li><a href="assets/projets/appart-coupe-cotee-2.jpg" data-en="Dimensioned furnished section (AutoCAD)" data-fr="Coupe aménagée cotée (AutoCAD)">Coupe aménagée cotée (AutoCAD)</a></li>
+            <li><a href="assets/projets/appart-moodboard-chambre.jpg" data-en="Bedroom moodboard — pared-back, soothing (InDesign)" data-fr="Moodboard chambre — épuré, apaisant (InDesign)">Moodboard chambre — épuré, apaisant (InDesign)</a></li>
+            <li><a href="assets/projets/appart-moodboard-salon.jpg" data-en="Living-room moodboard — wood, concrete, balance (InDesign)" data-fr="Moodboard salon — bois, béton, équilibre (InDesign)">Moodboard salon — bois, béton, équilibre (InDesign)</a></li>
+            <li><a href="assets/projets/perspective-habitat-chambre.jpg" data-en="Bedroom perspective, hand-drawn" data-fr="Perspective de la chambre, à la main">Perspective de la chambre, à la main</a></li>
+            <li><a href="assets/projets/perspective-habitat-cuisine.jpg" data-en="Kitchen perspective, hand-drawn" data-fr="Perspective de la cuisine, à la main">Perspective de la cuisine, à la main</a></li>
+          </ul>
+        </div>
+
+        <!-- ERP : open-space Adopt -->
+        <div class="project-card reveal reveal-delay-2" data-tech="erp autocad maquette">
+          <div class="project-img-wrap" data-gallery-open>
+            <img src="assets/projets/erp-moodboard-concept.jpg" alt="Moodboard concept du projet open-space Adopt" class="project-img" loading="lazy"
+                 onerror="this.closest('.project-img-wrap').style.display='none'">
+          </div>
+          <div class="project-header">
+            <div class="project-icon">🏢</div>
+            <div class="project-links">
+              <button type="button" class="project-link" data-gallery-open title="Voir les planches" aria-label="Voir les planches en grand">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-name" data-en="ERP project — Open-plan office for Adopt" data-fr="Projet ERP — Open-space pour Adopt">Projet ERP — Open-space pour Adopt</div>
+          <div class="project-desc" data-en="Renovating offices into an open-plan space suited to a company of our choice. With my project partner we chose the perfume brand Adopt and a <strong>hummingbird</strong> concept, tied to its logo: concept moodboard, concept models of a screen and a draped ceiling, then furnished plans and dimensioned sections."
+               data-fr="Rénovation de bureaux en open-space adapté à l'entreprise de notre choix. Avec ma binôme, nous avons choisi la marque de parfums Adopt et le concept du <strong>colibri</strong>, lié à son logo : moodboard concept, maquettes concept d'un paravent et d'un plafond en voile, puis plans aménagés et coupes cotées.">Rénovation de bureaux en open-space adapté à l'entreprise de notre choix. Avec ma binôme, nous avons choisi la marque de parfums Adopt et le concept du <strong>colibri</strong>, lié à son logo : moodboard concept, maquettes concept d'un paravent et d'un plafond en voile, puis plans aménagés et coupes cotées.</div>
+          <div class="project-tech"><span>AutoCAD</span><span>InDesign</span><span>ERP</span><span data-en="Concept models" data-fr="Maquettes concept">Maquettes concept</span><span data-en="Concept" data-fr="Concept">Concept</span></div>
+          <ul class="project-gallery" hidden>
+            <li><a href="assets/projets/erp-moodboard-concept.jpg" data-en="Concept moodboard — feathers, airy, movement" data-fr="Moodboard concept — plumes, aérien, mouvement">Moodboard concept — plumes, aérien, mouvement</a></li>
+            <li><a href="assets/projets/erp-plan-amenage.jpg" data-en="Full furnished plan" data-fr="Plan aménagé complet">Plan aménagé complet</a></li>
+            <li><a href="assets/projets/erp-coupe-cotee-1.jpg" data-en="Dimensioned furnished section" data-fr="Coupe aménagée cotée">Coupe aménagée cotée</a></li>
+            <li><a href="assets/projets/erp-coupe-cotee-2.jpg" data-en="Dimensioned furnished section" data-fr="Coupe aménagée cotée">Coupe aménagée cotée</a></li>
+            <li><a href="assets/projets/erp-maquette-paravent-1.jpg" data-en="Concept model of the screen" data-fr="Maquette concept du paravent">Maquette concept du paravent</a></li>
+            <li><a href="assets/projets/erp-maquette-paravent-2.jpg" data-en="Concept model of the screen (side view)" data-fr="Maquette concept du paravent (vue de côté)">Maquette concept du paravent (vue de côté)</a></li>
+            <li><a href="assets/projets/erp-maquette-plafond-1.jpg" data-en="Concept model of the draped ceiling" data-fr="Maquette concept du plafond en voile">Maquette concept du plafond en voile</a></li>
+            <li><a href="assets/projets/erp-maquette-plafond-2.jpg" data-en="Concept model of the draped ceiling (detail)" data-fr="Maquette concept du plafond en voile (détail)">Maquette concept du plafond en voile (détail)</a></li>
+          </ul>
+        </div>
+
+        <!-- Maquette de détail : suite d'hôtel -->
+        <div class="project-card reveal reveal-delay-2" data-tech="maquette">
+          <div class="project-img-wrap" data-gallery-open>
+            <img src="assets/projets/detail-chambre.jpg" alt="Maquette de détail d'une suite d'hôtel" class="project-img" loading="lazy"
+                 onerror="this.closest('.project-img-wrap').style.display='none'">
+          </div>
+          <div class="project-header">
+            <div class="project-icon">🛏️</div>
+            <div class="project-links">
+              <button type="button" class="project-link" data-gallery-open title="Voir les planches" aria-label="Voir les planches en grand">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-name" data-en="Detail model — Hotel suite" data-fr="Maquette de détail — Suite d'hôtel">Maquette de détail — Suite d'hôtel</div>
+          <div class="project-desc" data-en="A very large-scale model of a hotel suite to work on the small fit-out details, materials and textures. Every material and colour choice is justified by the source of inspiration: architect Pierre Yovanovitch's Trocadéro project."
+               data-fr="Maquette d'une suite d'hôtel à très grande échelle pour travailler les petits détails d'agencement, les matériaux et les textures. Chaque choix de matériau et de couleur est justifié par la source d'inspiration : le projet Trocadéro de l'architecte Pierre Yovanovitch.">Maquette d'une suite d'hôtel à très grande échelle pour travailler les petits détails d'agencement, les matériaux et les textures. Chaque choix de matériau et de couleur est justifié par la source d'inspiration : le projet Trocadéro de l'architecte Pierre Yovanovitch.</div>
+          <div class="project-tech"><span data-en="Model" data-fr="Maquette">Maquette</span><span data-en="Large scale" data-fr="Grande échelle">Grande échelle</span><span data-en="Materials" data-fr="Matériaux">Matériaux</span><span>Moodboard</span></div>
+          <ul class="project-gallery" hidden>
+            <li><a href="assets/projets/detail-vue-ensemble.jpg" data-en="Overall view" data-fr="Vue d'ensemble">Vue d'ensemble</a></li>
+            <li><a href="assets/projets/detail-chambre.jpg" data-en="Hotel bedroom" data-fr="Chambre d'hôtel">Chambre d'hôtel</a></li>
+            <li><a href="assets/projets/detail-salle-de-bain.jpg" data-en="Bathroom" data-fr="Salle de bain">Salle de bain</a></li>
+            <li><a href="assets/projets/detail-moodboard.jpg" data-en="Inspiration moodboard — Pierre Yovanovitch, Trocadéro project" data-fr="Moodboard d'inspiration — Pierre Yovanovitch, projet Trocadéro">Moodboard d'inspiration — Pierre Yovanovitch, projet Trocadéro</a></li>
+          </ul>
+        </div>
+
+        <!-- Maquette d'étude : volumétrie -->
+        <div class="project-card reveal reveal-delay-3" data-tech="maquette">
+          <div class="project-img-wrap" data-gallery-open>
+            <img src="assets/projets/etude-facade-droite.jpg" alt="Maquette d'étude en volumétrie" class="project-img" loading="lazy"
+                 onerror="this.closest('.project-img-wrap').style.display='none'">
+          </div>
+          <div class="project-header">
+            <div class="project-icon">🧱</div>
+            <div class="project-links">
+              <button type="button" class="project-link" data-gallery-open title="Voir les planches" aria-label="Voir les planches en grand">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-name" data-en="Study model — Volumetry" data-fr="Maquette d'étude — Volumétrie">Maquette d'étude — Volumétrie</div>
+          <div class="project-desc" data-en="Designing a space in volume from a 2D graphic exploration, checking that a 3D model built from a 2D zoning is feasible: structural, functional, technical and aesthetic aspects. I then cut and assembled the materials to show the different volumes and how they connect (ground floor + upper floor)."
+               data-fr="Conception d'un espace en volumétrie à partir d'une recherche graphique 2D, en veillant à la faisabilité d'une maquette 3D à partir d'un zoning 2D : aspects structurels, fonctionnels, techniques et esthétiques. J'ai ensuite découpé et assemblé les matériaux pour représenter les volumes et leur articulation (RDC + étage).">Conception d'un espace en volumétrie à partir d'une recherche graphique 2D, en veillant à la faisabilité d'une maquette 3D à partir d'un zoning 2D : aspects structurels, fonctionnels, techniques et esthétiques. J'ai ensuite découpé et assemblé les matériaux pour représenter les volumes et leur articulation (RDC + étage).</div>
+          <div class="project-tech"><span data-en="Model" data-fr="Maquette">Maquette</span><span data-en="Volumetry" data-fr="Volumétrie">Volumétrie</span><span data-en="2D zoning → 3D" data-fr="Zoning 2D → 3D">Zoning 2D → 3D</span></div>
+          <ul class="project-gallery" hidden>
+            <li><a href="assets/projets/etude-facade-droite.jpg" data-en="Exterior view" data-fr="Vue extérieure">Vue extérieure</a></li>
+            <li><a href="assets/projets/etude-facade-gauche.jpg" data-en="Exterior view" data-fr="Vue extérieure">Vue extérieure</a></li>
+            <li><a href="assets/projets/etude-facade-principale.jpg" data-en="Main façade (entrance)" data-fr="Façade principale (entrée)">Façade principale (entrée)</a></li>
+            <li><a href="assets/projets/etude-interieur-1.jpg" data-en="Interior (ground floor + upper floor)" data-fr="Intérieur (RDC + étage)">Intérieur (RDC + étage)</a></li>
+            <li><a href="assets/projets/etude-interieur-2.jpg" data-en="Interior (ground floor + upper floor)" data-fr="Intérieur (RDC + étage)">Intérieur (RDC + étage)</a></li>
+          </ul>
+        </div>
+
+        <!-- Perspectives à la main -->
+        <div class="project-card reveal reveal-delay-4" data-tech="dessin habitat">
+          <div class="project-img-wrap" data-gallery-open>
+            <img src="assets/projets/perspective-habitat-cuisine.jpg" alt="Perspective de cuisine dessinée à la main" class="project-img" loading="lazy"
+                 onerror="this.closest('.project-img-wrap').style.display='none'">
+          </div>
+          <div class="project-header">
+            <div class="project-icon">✏️</div>
+            <div class="project-links">
+              <button type="button" class="project-link" data-gallery-open title="Voir les planches" aria-label="Voir les planches en grand">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-name" data-en="Hand-drawn perspectives" data-fr="Perspectives à la main">Perspectives à la main</div>
+          <div class="project-desc" data-en="Two-point perspective grids and coloured perspectives of the Housing project: living room, kitchen and bedroom, drawn and coloured by hand."
+               data-fr="Grilles de perspective à 2 points de fuite et perspectives mises en couleur du projet Habitat : salon, cuisine et chambre, dessinés et colorés à la main.">Grilles de perspective à 2 points de fuite et perspectives mises en couleur du projet Habitat : salon, cuisine et chambre, dessinés et colorés à la main.</div>
+          <div class="project-tech"><span data-en="Hand drawing" data-fr="Dessin à la main">Dessin à la main</span><span data-en="2 vanishing points" data-fr="2 points de fuite">2 points de fuite</span><span data-en="Colouring" data-fr="Mise en couleur">Mise en couleur</span></div>
+          <ul class="project-gallery" hidden>
+            <li><a href="assets/projets/perspective-habitat-cuisine.jpg" data-en="Housing project — kitchen" data-fr="Projet Habitat — cuisine">Projet Habitat — cuisine</a></li>
+            <li><a href="assets/projets/perspective-habitat-chambre.jpg" data-en="Housing project — bedroom" data-fr="Projet Habitat — chambre">Projet Habitat — chambre</a></li>
+            <li><a href="assets/projets/perspective-grille-salon.jpg" data-en="Two-point perspective grid — living room" data-fr="Grille de perspective à 2 points de fuite — salon">Grille de perspective à 2 points de fuite — salon</a></li>
+            <li><a href="assets/projets/perspective-grille-cuisine.jpg" data-en="Two-point perspective grid — kitchen" data-fr="Grille de perspective à 2 points de fuite — cuisine">Grille de perspective à 2 points de fuite — cuisine</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+
+      <!-- Boutons « Voir tous les projets » + portfolio complet en PDF -->
+      <div class="projects-see-all reveal reveal-delay-4">
+        <a href="html/projects.html" class="btn btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          <span data-en="See all projects" data-fr="Voir tous les projets">Voir tous les projets</span>
+        </a>
+        <a href="assets/Portfolio_Melissa_Laurent.pdf" target="_blank" rel="noopener" class="btn btn-tertiary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span data-en="Full portfolio (PDF)" data-fr="Portfolio complet (PDF)">Portfolio complet (PDF)</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="section-divider"></div>
+
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section id="experience">
+    <div class="container">
+      <p class="section-eyebrow reveal"><span class="section-num">04</span><span data-en="Experience &amp; Education" data-fr="Expériences &amp; Formations">Expériences &amp; Formations</span></p>
+      <h2 class="section-title reveal reveal-delay-1" data-en="My journey so far" data-fr="Mon parcours">Mon parcours</h2>
+
+      <!-- timeline : liste chronologique avec une ligne verticale CSS en arrière-plan (::before) -->
+      <div class="timeline">
+        <!-- timeline-item current : prochaine étape, mise en valeur en bleu ciel -->
+        <div class="timeline-item current reveal reveal-delay-1">
+          <div class="timeline-dot">🏗️</div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-role" data-en="Internship wanted — Digital construction / BIM" data-fr="Stage recherché — Bâtiment numérique / BIM">Stage recherché — Bâtiment numérique / BIM</div>
+                <div class="timeline-org" data-en="5 weeks · open to offers" data-fr="5 semaines · ouverte aux propositions">5 semaines · ouverte aux propositions</div>
+              </div>
+              <div class="timeline-date" data-en="June 2027" data-fr="Juin 2027">Juin 2027</div>
+            </div>
+            <ul class="timeline-desc">
+              <li data-en="Discover hands-on the working methods around BIM and digital models" data-fr="Découvrir concrètement les méthodes de travail liées au BIM et à la maquette numérique">Découvrir concrètement les méthodes de travail liées au BIM et à la maquette numérique</li>
+              <li data-en="Put my plan reading, site understanding and grasp of technical constraints to work" data-fr="Mettre à profit mes bases en lecture de plans, compréhension du chantier et contraintes techniques">Mettre à profit mes bases en lecture de plans, compréhension du chantier et contraintes techniques</li>
+            </ul>
+            <div class="timeline-tags"><span>BIM</span><span data-en="Digital model" data-fr="Maquette numérique">Maquette numérique</span><span>Revit</span><span>Archicad</span></div>
+          </div>
+        </div>
+        <div class="timeline-item reveal reveal-delay-2">
+          <div class="timeline-dot">🎓</div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-role" data-en="Bachelor in Interior Architecture — 2nd year" data-fr="Bachelor Architecture d'intérieur — 2<sup>e</sup> année">Bachelor Architecture d'intérieur — 2<sup>e</sup> année</div>
+                <div class="timeline-org">Ynov Campus · Val d'Europe</div>
+              </div>
+              <div class="timeline-date" data-en="2025 → today" data-fr="2025 → aujourd'hui">2025 → aujourd'hui</div>
+            </div>
+            <ul class="timeline-desc">
+              <li data-en="1st year: Housing project (aparthotel) and ERP project (open-plan office), in pairs" data-fr="1<sup>re</sup> année : projet Habitat (appartement-hôtel) et projet ERP (open-space), en binôme">1<sup>re</sup> année : projet Habitat (appartement-hôtel) et projet ERP (open-space), en binôme</li>
+              <li data-en="Study and detail models, technical and traditional drawing" data-fr="Maquettes d'étude et de détail, dessin technique et traditionnel">Maquettes d'étude et de détail, dessin technique et traditionnel</li>
+              <li data-en="DIY workshops at Leroy Merlin: electricity, flooring, tiling, painting" data-fr="Ateliers chez Leroy Merlin : électricité, parquet, carrelage, peinture">Ateliers chez Leroy Merlin : électricité, parquet, carrelage, peinture</li>
+            </ul>
+            <div class="timeline-tags"><span>AutoCAD</span><span>InDesign</span><span>Photoshop</span><span>Archicad</span><span data-en="Models" data-fr="Maquettes">Maquettes</span></div>
+          </div>
+        </div>
+        <div class="timeline-item reveal reveal-delay-3">
+          <div class="timeline-dot">🚧</div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-role" data-en="Intern — Earthworks company" data-fr="Stagiaire — Entreprise de travaux de terrassement">Stagiaire — Entreprise de travaux de terrassement</div>
+                <div class="timeline-org">SPIE Batignolles Valérian</div>
+              </div>
+              <div class="timeline-date" data-en="4 weeks" data-fr="4 semaines">4 semaines</div>
+            </div>
+            <ul class="timeline-desc">
+              <li data-en="Technical side of building, reading and producing plans" data-fr="L'aspect technique du bâtiment, la lecture et la production de plans">L'aspect technique du bâtiment, la lecture et la production de plans</li>
+              <li data-en="How a construction site runs, and a sense of budget from talking with building professionals" data-fr="Le déroulement d'un chantier et le sens du budget, en échangeant avec des professionnels du bâtiment">Le déroulement d'un chantier et le sens du budget, en échangeant avec des professionnels du bâtiment</li>
+            </ul>
+            <div class="timeline-tags"><span data-en="Construction site" data-fr="Chantier">Chantier</span><span data-en="Plan reading" data-fr="Lecture de plans">Lecture de plans</span><span data-en="Budget" data-fr="Budget">Budget</span></div>
+          </div>
+        </div>
+        <div class="timeline-item reveal reveal-delay-4">
+          <div class="timeline-dot">🎨</div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-role" data-en="Children's activity leader" data-fr="Animatrice enfants">Animatrice enfants</div>
+                <div class="timeline-org" data-en="Summer camp · Leisure centre · Holiday club" data-fr="Colonie · Centre de loisirs · Club de vacances">Colonie · Centre de loisirs · Club de vacances</div>
+              </div>
+              <div class="timeline-date" data-en="1 wk · 1 wk · 4 months" data-fr="1 sem. · 1 sem. · 4 mois">1 sem. · 1 sem. · 4 mois</div>
+            </div>
+            <ul class="timeline-desc">
+              <li data-en="Creativity and imagination, adaptability and quick reactions to the unexpected" data-fr="Créativité et imagination, adaptabilité et réactivité face aux imprévus">Créativité et imagination, adaptabilité et réactivité face aux imprévus</li>
+              <li data-en="Organisation, teamwork and a sharp sense of observation" data-fr="Sens de l'organisation, travail en équipe et sens de l'observation">Sens de l'organisation, travail en équipe et sens de l'observation</li>
+            </ul>
+            <div class="timeline-tags"><span>BAFA</span><span data-en="Creativity" data-fr="Créativité">Créativité</span><span data-en="Adaptability" data-fr="Adaptabilité">Adaptabilité</span><span data-en="Teamwork" data-fr="Équipe">Équipe</span></div>
+          </div>
+        </div>
+        <div class="timeline-item reveal reveal-delay-4">
+          <div class="timeline-dot">🏙️</div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-role" data-en="Bachelor's degree in Urban Engineering — 1st year" data-fr="Licence Génie urbain — 1<sup>re</sup> année">Licence Génie urbain — 1<sup>re</sup> année</div>
+                <div class="timeline-org">Université Gustave Eiffel</div>
+              </div>
+              <div class="timeline-date" data-en="1 year" data-fr="1 an">1 an</div>
+            </div>
+            <ul class="timeline-desc">
+              <li data-en="First foundations in plan reading, understanding construction sites and technical constraints" data-fr="Premières bases en lecture de plans, compréhension du chantier et contraintes techniques">Premières bases en lecture de plans, compréhension du chantier et contraintes techniques</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item reveal reveal-delay-5">
+          <div class="timeline-dot">📚</div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-role" data-en="Baccalauréat — with honours (mention Bien)" data-fr="Baccalauréat — mention Bien">Baccalauréat — mention Bien</div>
+                <div class="timeline-org" data-en="Martin Luther King high school" data-fr="Lycée Martin Luther King">Lycée Martin Luther King</div>
+              </div>
+              <div class="timeline-date" data-en="Honours" data-fr="Mention Bien">Mention Bien</div>
+            </div>
+            <ul class="timeline-desc">
+              <li data-en="Majors in maths and physics-chemistry, advanced maths option" data-fr="Spécialités maths et physique-chimie, option maths expertes">Spécialités maths et physique-chimie, option maths expertes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="section-divider"></div>
+
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <!-- Moitié pêche + trait fin : reprend la page « CONTACT » de son PDF -->
+    <div class="deco deco-peach-half" aria-hidden="true"></div>
+    <div class="deco deco-line-v" aria-hidden="true"></div>
+    <div class="container">
+      <!-- contact-wrapper : centré et limité à 680px de large pour une meilleure lisibilité -->
+      <div class="contact-wrapper">
+        <p class="section-eyebrow reveal" style="justify-content:center"><span class="section-num">05</span><span>Contact</span></p>
+        <h2 class="section-title reveal reveal-delay-1" style="text-align:center" data-en="Let's design" data-fr="Imaginons">Imaginons</h2>
+        <p class="hero-typewriter" data-tw="contact">
+          <span class="tw-prefix" data-en="" data-fr=""></span>
+          <span class="tw-word"></span>
+          <span class="tw-cursor" aria-hidden="true">|</span>
+        </p>
+        <!-- contact-card : carte centrée avec lueur bleu ciel décorative (::before en CSS) -->
+        <div class="contact-card reveal reveal-delay-2">
+          <p class="contact-cta-text" data-en="An internship offer, an interior design project, or simply a chat about interior architecture and BIM? My inbox is always open."
+             data-fr="Une proposition de stage, un projet d'aménagement ou simplement l'envie d'échanger sur l'architecture intérieure et le BIM ? Ma boîte mail est toujours ouverte.">Une proposition de stage, un projet d'aménagement ou simplement l'envie d'échanger sur l'architecture intérieure et le BIM ? Ma boîte mail est toujours ouverte.</p>
+          <!-- justify-content:center pour centrer le lien email -->
+          <div style="display:flex;justify-content:center">
+            <!-- contact-email : stylisé comme un champ en lecture seule, un clic ouvre le client mail -->
+            <a href="mailto:melissa_laurent@icloud.com" class="contact-email">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+              melissa_laurent@icloud.com
+            </a>
+          </div>
+          <!-- Ville uniquement : pas d'adresse ni de téléphone sur un site public -->
+          <p class="contact-location">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Bussy-Saint-Georges, France
+          </p>
+          <!-- Liens sociaux sous l'adresse email -->
+          <div class="contact-links">
+            <a href="https://www.linkedin.com/in/PSEUDO_LINKEDIN/" target="_blank" rel="noopener">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://www.instagram.com/PSEUDO_INSTAGRAM/" target="_blank" rel="noopener">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>
+              Instagram
+            </a>
+            <a href="https://github.com/Melissa-Laurent" target="_blank" rel="noopener">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== LIKE BUTTON ===== -->
+  <div class="like-section">
+    <button class="like-btn" id="likeBtn" aria-label="J'aime ce portfolio">
+      <span class="like-icon">♡</span>
+      <span class="like-count" id="likeCount">0</span>
+    </button>
+    <p class="like-label" data-en="Like this portfolio!" data-fr="J'aime ce portfolio !">J'aime ce portfolio !</p>
+  </div>
+
+  <!-- ===== FOOTER (injecté via js/includes.js) ===== -->
+  <div id="footer-placeholder"></div>
+
+
+  <script src="js/cursor-spotlight.js" defer></script>
+  <script src="js/lang.js" defer></script>
+  <script src="js/typewriter.js" defer></script>
+  <script src="js/scroll-reveal.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/includes.js" defer></script>
+  <script src="js/project-filter.js" defer></script>
+  <script src="js/project-img-fit.js" defer></script>
+  <script src="js/lightbox.js" defer></script>
+  <script src="js/likes.js" defer></script>
+</body>
+</html>
