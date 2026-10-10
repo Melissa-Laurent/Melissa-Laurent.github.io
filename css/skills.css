@@ -61,3 +61,119 @@
 .skill-logo--peach { background: var(--peach); }
 .skill-logo--navy  { background: var(--navy); color: var(--cream); }
 .skill-logo--ink   { background: var(--ink);  color: var(--cream); }
+
+/* ===== MÉTHODE DE PROJET — ligne de cote ===== */
+/* Les étapes sont posées sur un trait de cotation d'archi (traits obliques aux extrémités).
+   Quand le bloc .reveal devient .visible, le trait se trace puis les étapes apparaissent en cascade. */
+.process { margin: 0.5rem 0 3.5rem; }
+.process-title {
+  font-family: var(--font-label); font-size: 0.74rem;
+  text-transform: uppercase; letter-spacing: 0.16em;
+  color: var(--text-muted); margin-bottom: 1.5rem;
+}
+.process-steps {
+  --track-y: 2.1rem;            /* hauteur du trait : sous les numéros, au centre des pastilles */
+  list-style: none; margin: 0; padding: 0 0.75rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0.5rem;
+}
+/* Le trait de cote — scaleX de 0 à 1 pour l'effet « tracé au crayon » */
+.process-steps::before {
+  content: '';
+  position: absolute; left: 0; right: 0; top: var(--track-y);
+  height: 1px; background: var(--line); opacity: 0.55;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.3s;
+}
+/* Traits obliques de cotation aux deux extrémités (un seul pseudo-élément, deux dégradés) */
+.process-steps::after {
+  content: '';
+  position: absolute; left: -5px; right: -5px; top: calc(var(--track-y) - 7px);
+  height: 14px;
+  background:
+    linear-gradient(135deg, transparent 46%, var(--line) 46% 54%, transparent 54%) left  / 14px 14px no-repeat,
+    linear-gradient(135deg, transparent 46%, var(--line) 46% 54%, transparent 54%) right / 14px 14px no-repeat;
+  opacity: 0;
+  transition: opacity 0.4s ease 1.6s;
+}
+.process.visible .process-steps::before { transform: scaleX(1); }
+.process.visible .process-steps::after  { opacity: 0.7; }
+
+.process-step {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+  cursor: default;
+  opacity: 0; transform: translateY(10px);
+  /* --i (posé dans le HTML) échelonne l'apparition de chaque étape le long du trait */
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16,1,0.3,1);
+  transition-delay: calc(0.45s + var(--i) * 0.14s);
+}
+.process.visible .process-step { opacity: 1; transform: none; }
+
+.process-num {
+  font-family: var(--font-label); font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.1em; color: var(--status-available);
+  height: 1.5rem; line-height: 1.5rem;
+}
+.process-dot {
+  width: 13px; height: 13px; border-radius: 50%;
+  margin: calc(var(--track-y) - 1.5rem - 6.5px) 0 0.75rem; /* centre la pastille sur le trait */
+  background: var(--bg);
+  border: 1.5px solid var(--accent);
+  position: relative; z-index: 1;   /* passe devant le trait */
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.process-label {
+  font-family: var(--font-serif); font-style: italic;
+  font-size: 0.98rem; line-height: 1.3;
+  color: var(--accent);
+  max-width: 9.5rem;
+  transition: transform 0.25s ease;
+}
+.process-step:hover .process-dot {
+  background: var(--peach); border-color: var(--peach);
+  transform: scale(1.35);
+  box-shadow: 0 0 0 5px var(--peach-light);
+}
+.process-step:hover .process-label { transform: translateY(-2px); }
+
+/* Tablette : 4 étapes par ligne, un trait par ligne serait trompeur → on passe en vertical dès 900px */
+@media (max-width: 900px) {
+  .process-steps {
+    --track-x: 1.4rem;
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    padding: 0.4rem 0;
+  }
+  /* Le trait devient vertical, à gauche */
+  .process-steps::before {
+    left: var(--track-x); right: auto; top: 0; bottom: 0;
+    width: 1px; height: auto;
+    transform: scaleY(0); transform-origin: top;
+  }
+  .process.visible .process-steps::before { transform: scaleY(1); }
+  .process-steps::after {
+    left: calc(var(--track-x) - 7px); right: auto; top: -5px; bottom: -5px;
+    width: 14px; height: auto;
+    background:
+      linear-gradient(135deg, transparent 46%, var(--line) 46% 54%, transparent 54%) top    / 14px 14px no-repeat,
+      linear-gradient(135deg, transparent 46%, var(--line) 46% 54%, transparent 54%) bottom / 14px 14px no-repeat;
+  }
+  .process-step {
+    display: grid;
+    grid-template-columns: calc(var(--track-x) * 2) 1.4rem 1fr; /* colonne du numéro fixe → libellés alignés */
+    align-items: center; gap: 0.75rem;
+    text-align: left;
+    transform: translateX(-8px);
+  }
+  .process-dot { grid-column: 1; grid-row: 1; justify-self: center; margin: 0; }
+  .process-num { grid-column: 2; grid-row: 1; }
+  .process-label { grid-column: 3; grid-row: 1; max-width: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-steps::before, .process-steps::after, .process-step { transition: none; }
+}

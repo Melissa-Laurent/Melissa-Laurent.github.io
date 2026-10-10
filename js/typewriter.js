@@ -15,11 +15,6 @@ const WORDS = {
     fr: ['des espaces à vivre', 'des plans AutoCAD', 'des maquettes', 'des moodboards', 'des perspectives'],
     en: ['living spaces', 'AutoCAD plans', 'scale models', 'moodboards', 'perspective drawings']
   },
-  // Compétences : « Ma méthode de projet : … » — les étapes décrites dans ses projets
-  methode: {
-    fr: ['relevé sur site', 'cahier des charges', "plans de l'existant", 'concept directeur', 'moodboards', 'plans & coupes cotés', 'maquettes', 'présentation client'],
-    en: ['site survey', 'client brief', 'as-built plans', 'guiding concept', 'moodboards', 'dimensioned plans & sections', 'scale models', 'client presentation']
-  },
   // Contact : « Imaginons … »
   contact: {
     fr: ['votre espace !', 'un projet ensemble !', 'la suite !'],

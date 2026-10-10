@@ -77,9 +77,9 @@
 
           <p class="hero-tagline reveal reveal-delay-4">
             <!-- Le span intérieur porte les attributs data-* pour que le JS puisse remplacer innerHTML (et interpréter <strong>) -->
-            <span data-en="Second-year interior architecture student at <strong>Ynov Campus</strong>. I combine space design, technical drawing and scale models, and I'm heading towards <strong>digital construction and BIM</strong>."
-                  data-fr="Étudiante en 2<sup>e</sup> année d'architecture d'intérieur à <strong>Ynov Campus</strong>. J'allie conception d'espace, dessin technique et maquette, et je m'oriente vers le <strong>bâtiment numérique et le BIM</strong>.">
-              Étudiante en 2<sup>e</sup> année d'architecture d'intérieur à <strong>Ynov Campus</strong>. J'allie conception d'espace, dessin technique et maquette, et je m'oriente vers le <strong>bâtiment numérique et le BIM</strong>.
+            <span data-en="Second-year interior architecture student at <strong>Ynov Campus</strong>. I combine space design, technical drawing, scale models, 2D plans and I'm heading towards <strong>digital construction and BIM</strong>."
+                  data-fr="Étudiante en 2<sup>e</sup> année d'architecture d'intérieur à <strong>Ynov Campus</strong>. J'allie conception d'espace, dessin technique, maquette, plan 2D et je m'oriente vers le <strong>bâtiment numérique et le BIM</strong>.">
+              Étudiante en 2<sup>e</sup> année d'architecture d'intérieur à <strong>Ynov Campus</strong>. J'allie conception d'espace, dessin technique, maquette, plan 2D et je m'oriente vers le <strong>bâtiment numérique et le BIM</strong>.
             </span>
           </p>
           <div class="hero-ctas reveal reveal-delay-5">
@@ -224,7 +224,7 @@
             </div>
             <div class="meta-item">
               <div class="label" data-en="Hobbies" data-fr="Passions">Passions</div>
-              <div class="value" data-en="🏺 Ceramics · ✏️ Drawing" data-fr="🏺 Céramique · ✏️ Dessin">🏺 Céramique · ✏️ Dessin</div>
+              <div class="value" data-en="🏠 Scale models · ✏️ Drawing" data-fr="🏠 Maquette · ✏️ Dessin">🏠 Maquette · ✏️ Dessin</div>
             </div>
           </div>
         </div>
@@ -273,11 +273,20 @@
       <p class="section-eyebrow reveal"><span class="section-num">02</span><span data-en="Skills" data-fr="Compétences">Compétences</span></p>
       <h2 class="section-title reveal reveal-delay-1" data-en="What I work with" data-fr="Mes outils">Mes outils</h2>
       <p class="section-subtitle reveal reveal-delay-2" data-en="Design software, representation techniques and know-how picked up in workshops." data-fr="Logiciels de conception, techniques de représentation et savoir-faire acquis en atelier.">Logiciels de conception, techniques de représentation et savoir-faire acquis en atelier.</p>
-      <p class="hero-typewriter" data-tw="methode">
-        <span class="tw-prefix" data-en="My design process: " data-fr="Ma méthode de projet : ">Ma méthode de projet : </span>
-        <span class="tw-word"></span>
-        <span class="tw-cursor" aria-hidden="true">|</span>
-      </p>
+      <!-- Méthode de projet : étapes posées sur une ligne de cote (trait tracé au scroll, étapes en cascade) -->
+      <div class="process reveal reveal-delay-3">
+        <p class="process-title" data-en="My design process" data-fr="Ma méthode de projet">Ma méthode de projet</p>
+        <ol class="process-steps">
+          <li class="process-step" style="--i:0"><span class="process-num">01</span><span class="process-dot" aria-hidden="true"></span><span class="process-label" data-en="site survey" data-fr="relevé sur site">relevé sur site</span></li>
+          <li class="process-step" style="--i:1"><span class="process-num">02</span><span class="process-dot" aria-hidden="true"></span><span class="process-label" data-en="client brief" data-fr="cahier des charges">cahier des charges</span></li>
+          <li class="process-step" style="--i:2"><span class="process-num">03</span><span class="process-dot" aria-hidden="true"></span><span class="process-label" data-en="as-built plans" data-fr="plans de l'existant">plans de l'existant</span></li>
+          <li class="process-step" style="--i:3"><span class="process-num">04</span><span class="process-dot" aria-hidden="true"></span><span class="process-label" data-en="guiding concept" data-fr="concept directeur">concept directeur</span></li>
+          <li class="process-step" style="--i:4"><span class="process-num">05</span><span class="process-dot" aria-hidden="true"></span><span class="process-label" data-en="moodboards" data-fr="moodboards">moodboards</span></li>
+          <li class="process-step" style="--i:5"><span class="process-num">06</span><span class="process-dot" aria-hidden="true"></span><span class="process-label" data-en="dimensioned plans &amp; sections" data-fr="plans &amp; coupes cotés">plans &amp; coupes cotés</span></li>
+          <li class="process-step" style="--i:6"><span class="process-num">07</span><span class="process-dot" aria-hidden="true"></span><span class="process-label" data-en="scale models" data-fr="maquettes">maquettes</span></li>
+          <li class="process-step" style="--i:7"><span class="process-num">08</span><span class="process-dot" aria-hidden="true"></span><span class="process-label" data-en="client presentation" data-fr="présentation client">présentation client</span></li>
+        </ol>
+      </div>
       <!-- Chaque skills-category : titre de catégorie + grille de tags -->
       <div class="skills-category reveal reveal-delay-1">
         <div class="skills-cat-title" data-en="Software" data-fr="Logiciels">Logiciels</div>
@@ -480,7 +489,7 @@
         <!-- Perspectives à la main -->
         <div class="project-card reveal reveal-delay-4" data-tech="dessin habitat">
           <div class="project-img-wrap" data-gallery-open>
-            <img src="assets/projets/perspective-habitat-cuisine.jpg" alt="Perspective de cuisine dessinée à la main" class="project-img" loading="lazy"
+            <img src="assets/projets/perspective-grille-cuisine.jpg" alt="Grille de perspective à 2 points de fuite — cuisine" class="project-img" loading="lazy"
                  onerror="this.closest('.project-img-wrap').style.display='none'">
           </div>
           <div class="project-header">
@@ -492,12 +501,10 @@
             </div>
           </div>
           <div class="project-name" data-en="Hand-drawn perspectives" data-fr="Perspectives à la main">Perspectives à la main</div>
-          <div class="project-desc" data-en="Two-point perspective grids and coloured perspectives of the Housing project: living room, kitchen and bedroom, drawn and coloured by hand."
-               data-fr="Grilles de perspective à 2 points de fuite et perspectives mises en couleur du projet Habitat : salon, cuisine et chambre, dessinés et colorés à la main.">Grilles de perspective à 2 points de fuite et perspectives mises en couleur du projet Habitat : salon, cuisine et chambre, dessinés et colorés à la main.</div>
+          <div class="project-desc" data-en="Two-point perspective grids : living room and kitchen drawn and coloured by hand."
+               data-fr="Grilles de perspective à 2 points de fuite : salon et cuisine dessinés et colorés à la main.">Grilles de perspective à 2 points de fuite : salon et cuisine dessinés et colorés à la main.</div>
           <div class="project-tech"><span data-en="Hand drawing" data-fr="Dessin à la main">Dessin à la main</span><span data-en="2 vanishing points" data-fr="2 points de fuite">2 points de fuite</span><span data-en="Colouring" data-fr="Mise en couleur">Mise en couleur</span></div>
           <ul class="project-gallery" hidden>
-            <li><a href="assets/projets/perspective-habitat-cuisine.jpg" data-en="Housing project — kitchen" data-fr="Projet Habitat — cuisine">Projet Habitat — cuisine</a></li>
-            <li><a href="assets/projets/perspective-habitat-chambre.jpg" data-en="Housing project — bedroom" data-fr="Projet Habitat — chambre">Projet Habitat — chambre</a></li>
             <li><a href="assets/projets/perspective-grille-salon.jpg" data-en="Two-point perspective grid — living room" data-fr="Grille de perspective à 2 points de fuite — salon">Grille de perspective à 2 points de fuite — salon</a></li>
             <li><a href="assets/projets/perspective-grille-cuisine.jpg" data-en="Two-point perspective grid — kitchen" data-fr="Grille de perspective à 2 points de fuite — cuisine">Grille de perspective à 2 points de fuite — cuisine</a></li>
           </ul>
