@@ -54,7 +54,7 @@ nav {
 }
 
 @media (min-width: 769px) {
-  .nav-logo { margin-left: 48px; }
+  .nav-logo { margin-left: 4rem; }
 }
 
 .nav-logo span { color: var(--accent); }
